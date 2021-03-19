@@ -1,0 +1,128 @@
+<Store>
+  <code>ed1234</code>
+  <manager>
+    <type>E</type>
+    <firstName>Quinn</firstName>
+    <lastName>Jeffrey</lastName>
+    <address>
+      <street>601 Lotheville Road</street>
+      <city>Savannah</city>
+      <state>GA</state>
+      <zip>31405</zip>
+      <country>US</country>
+    </address>
+    <emails>
+      <string>squarry0@reverbnation.com</string>
+      <string>squarry0@salon.com</string>
+    </emails>
+  </manager>
+  <address>
+    <street>18913 Chandler St</street>
+    <city>Omaha</city>
+    <state>NE</state>
+    <zip>68136</zip>
+    <country>US</country>
+  </address>
+</Store>
+<Store>
+  <code>94pf32</code>
+  <manager>
+    <type>E</type>
+    <firstName>John </firstName>
+    <lastName>JohnnyDrip</lastName>
+    <address>
+      <street>360 NoScope Plaza</street>
+      <city>Wichita</city>
+      <state>KS</state>
+      <zip>67230</zip>
+      <country>US</country>
+    </address>
+    <emails>
+      <string>JohnnyDrip@gman.com</string>
+    </emails>
+  </manager>
+  <address>
+    <street>1234 Apple Street</street>
+    <city>Los Angeles</city>
+    <state>CA</state>
+    <zip>35815</zip>
+    <country>US</country>
+  </address>
+</Store>
+<Store>
+  <code>73668b</code>
+  <manager>
+    <type>E</type>
+    <firstName>Quinn</firstName>
+    <lastName>Jeffrey</lastName>
+    <address>
+      <street>601 Lotheville Road</street>
+      <city>Savannah</city>
+      <state>GA</state>
+      <zip>31405</zip>
+      <country>US</country>
+    </address>
+    <emails>
+      <string>squarry0@reverbnation.com</string>
+      <string>squarry0@salon.com</string>
+    </emails>
+  </manager>
+  <address>
+    <street>3984 Jeff Street</street>
+    <city>Phoenix</city>
+    <state>AZ</state>
+    <zip>85099</zip>
+    <country>US</country>
+  </address>
+</Store>
+<Store>
+  <code>96f2cf</code>
+  <manager>
+    <type>E</type>
+    <firstName>Quinn</firstName>
+    <lastName>Jeffrey</lastName>
+    <address>
+      <street>601 Lotheville Road</street>
+      <city>Savannah</city>
+      <state>GA</state>
+      <zip>31405</zip>
+      <country>US</country>
+    </address>
+    <emails>
+      <string>squarry0@reverbnation.com</string>
+      <string>squarry0@salon.com</string>
+    </emails>
+  </manager>
+  <address>
+    <street>69420 Nice Street</street>
+    <city>Gainesville</city>
+    <state>FL</state>
+    <zip>32605</zip>
+    <country>US</country>
+  </address>
+</Store>
+<Store>
+  <code>69x420</code>
+  <manager>
+    <type>E</type>
+    <firstName>John </firstName>
+    <lastName>JohnnyDrip</lastName>
+    <address>
+      <street>360 NoScope Plaza</street>
+      <city>Wichita</city>
+      <state>KS</state>
+      <zip>67230</zip>
+      <country>US</country>
+    </address>
+    <emails>
+      <string>JohnnyDrip@gman.com</string>
+    </emails>
+  </manager>
+  <address>
+    <street>360 Noscope Plaza</street>
+    <city>Wichita</city>
+    <state>KS</state>
+    <zip>67230</zip>
+    <country>US</country>
+  </address>
+</Store>

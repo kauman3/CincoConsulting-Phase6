@@ -1,0 +1,100 @@
+<UsedProduct>
+  <type>PU</type>
+  <name>Oculus Quest 2</name>
+  <price>249.99</price>
+</UsedProduct>
+<NewProduct>
+  <type>PN</type>
+  <name>GamerStation2000</name>
+  <price>3999.99</price>
+</NewProduct>
+<GiftCard>
+  <type>PG</type>
+  <name>iTunes</name>
+  <price></price>
+</GiftCard>
+<NewProduct>
+  <type>PN</type>
+  <name>Nintendo DSi </name>
+  <price>84.99</price>
+</NewProduct>
+<NewProduct>
+  <type>PN</type>
+  <name>Fortnite Skin</name>
+  <price>19.99</price>
+</NewProduct>
+<Service>
+  <type>SV</type>
+  <name>Virus Removal</name>
+  <price>34.99</price>
+</Service>
+<Service>
+  <type>SV</type>
+  <name>PC Repair</name>
+  <price>99.99</price>
+</Service>
+<NewProduct>
+  <type>PN</type>
+  <name>Call of Duty Cold War</name>
+  <price>69.99</price>
+</NewProduct>
+<Service>
+  <type>SV</type>
+  <name>Gamer Bus</name>
+  <price>299.99</price>
+</Service>
+<GiftCard>
+  <type>PG</type>
+  <name>Amazon</name>
+  <price></price>
+</GiftCard>
+<UsedProduct>
+  <type>PU</type>
+  <name>Valve Index</name>
+  <price>599.99</price>
+</UsedProduct>
+<Subscription>
+  <type>SB</type>
+  <name>Steam Ultra</name>
+  <price>39.99</price>
+</Subscription>
+<NewProduct>
+  <type>PN</type>
+  <name>G-Fuel</name>
+  <price>10.99</price>
+</NewProduct>
+<GiftCard>
+  <type>PG</type>
+  <name>Fortnite V-Bucks</name>
+  <price></price>
+</GiftCard>
+<GiftCard>
+  <type>PG</type>
+  <name>PlayStation Store</name>
+  <price></price>
+</GiftCard>
+<UsedProduct>
+  <type>PU</type>
+  <name>Pokemon Arceus</name>
+  <price>59.99</price>
+</UsedProduct>
+<Service>
+  <type>SV</type>
+  <name>Console Cleaning</name>
+  <price>29.99</price>
+</Service>
+<Subscription>
+  <type>SB</type>
+  <name>PlayStation Now</name>
+  <price>79.99</price>
+</Subscription>
+<UsedProduct>
+  <type>PU</type>
+  <name>World of Warships</name>
+  <price>59.99</price>
+</UsedProduct>
+<Subscription>
+  <type>SB</type>
+  <name>PlayStation Plus</name>
+  <price>59.99</price>
+</Subscription>

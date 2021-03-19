@@ -5,7 +5,8 @@ import java.util.List;
 
 
 /**
- * This class models a Person with a personCode, type, firstName, lastName, and address.
+ * This abstract class models a Person with a personCode, firstName, lastName, 
+ * address, and a list of email addresses.
  * 
  * @author kauman<br \>
  * Kyle Auman<br \>
@@ -14,53 +15,40 @@ import java.util.List;
  * @author zmain<br \>
  * Zach Main<br \>
  * zmain2@huskers.unl.edu<br \>
- * CSCE156<br \>
- *
+ * CSCE156
  */
-public class Person {
+public abstract class Person {
 	
-	private String type;
-	private String firstName;
-	private String lastName;
-	private Address address;
-	private List<String> emails;
+	private final String personCode;
+	private final String firstName;
+	private final String lastName;
+	private final Address address;
+	private final List<String> emails;
 	
-	public Person(String type, String firstName, String lastName, Address address, List<String> emails) {
-		this.type = type;
+	public Person(String personCode, String firstName, String lastName, Address address, List<String> emails) {
+		this.personCode = personCode;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
 		this.emails = emails;
 	}
 	
-	public Person(String type, String firstName, String lastName, Address address) {
-		this(type, firstName, lastName, address, Collections.emptyList());
+	public Person(String personCode, String firstName, String lastName, Address address) {
+		this(personCode, firstName, lastName, address, Collections.emptyList());
 	}
 
-	/**
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
+	public String getPersonCode() {
+		return personCode;
 	}
-	
-	/**
-	 * @return the fullName
-	 */
+
 	public String getFullName() {
 		return lastName + ", " + firstName;
 	}
 
-	/**
-	 * @return the address
-	 */
 	public Address getAddress() {
 		return address;
 	}
 
-	/**
-	 * @return the emails
-	 */
 	public List<String> getEmails() {
 		return emails;
 	}

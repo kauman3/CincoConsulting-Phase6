@@ -15,18 +15,17 @@ import java.util.Map;
  * @author zmain<br \>
  * Zach Main<br \>
  * zmain2@huskers.unl.edu<br \>
- * CSCE156<br \>
- *
+ * CSCE156
  */
 public class Address {
 	
-	private String street;
-	private String city;
-	private String state;
-	private String zip;
-	private String country;
+	private final String street;
+	private final String city;
+	private final String state;
+	private final int zip;
+	private final String country;
 	
-	public Address(String street, String city, String state, String zip, String country) {
+	public Address(String street, String city, String state, int zip, String country) {
 		this.street = street;
 		this.city = city;
 		this.state = state;
@@ -34,37 +33,22 @@ public class Address {
 		this.country = country;
 	}
 
-	/**
-	 * @return the street
-	 */
 	public String getStreet() {
 		return street;
 	}
 
-	/**
-	 * @return the city
-	 */
 	public String getCity() {
 		return city;
 	}
 
-	/**
-	 * @return the state
-	 */
 	public String getState() {
 		return state;
 	}
 
-	/**
-	 * @return the zip
-	 */
-	public String getZip() {
+	public int getZip() {
 		return zip;
 	}
 
-	/**
-	 * @return the country
-	 */
 	public String getCountry() {
 		return country;
 	}

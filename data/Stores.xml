@@ -1,9 +1,9 @@
 <Store>
-  <code>ed1234</code>
-  <manager>
-    <type>E</type>
-    <firstName>Quinn</firstName>
-    <lastName>Jeffrey</lastName>
+  <storeCode>ed1234</storeCode>
+  <manager class="Salesperson">
+    <personCode>ttg420</personCode>
+    <firstName>Jeffrey</firstName>
+    <lastName>Quinn</lastName>
     <address>
       <street>601 Lotheville Road</street>
       <city>Savannah</city>
@@ -25,10 +25,10 @@
   </address>
 </Store>
 <Store>
-  <code>94pf32</code>
-  <manager>
-    <type>E</type>
-    <firstName>John </firstName>
+  <storeCode>94pf32</storeCode>
+  <manager class="Salesperson">
+    <personCode>aa887a</personCode>
+    <firstName>John</firstName>
     <lastName>JohnnyDrip</lastName>
     <address>
       <street>360 NoScope Plaza</street>
@@ -50,11 +50,11 @@
   </address>
 </Store>
 <Store>
-  <code>73668b</code>
-  <manager>
-    <type>E</type>
-    <firstName>Quinn</firstName>
-    <lastName>Jeffrey</lastName>
+  <storeCode>73668b</storeCode>
+  <manager class="Salesperson">
+    <personCode>ttg420</personCode>
+    <firstName>Jeffrey</firstName>
+    <lastName>Quinn</lastName>
     <address>
       <street>601 Lotheville Road</street>
       <city>Savannah</city>
@@ -76,11 +76,11 @@
   </address>
 </Store>
 <Store>
-  <code>96f2cf</code>
-  <manager>
-    <type>E</type>
-    <firstName>Quinn</firstName>
-    <lastName>Jeffrey</lastName>
+  <storeCode>96f2cf</storeCode>
+  <manager class="Salesperson">
+    <personCode>ttg420</personCode>
+    <firstName>Jeffrey</firstName>
+    <lastName>Quinn</lastName>
     <address>
       <street>601 Lotheville Road</street>
       <city>Savannah</city>
@@ -102,10 +102,10 @@
   </address>
 </Store>
 <Store>
-  <code>69x420</code>
-  <manager>
-    <type>E</type>
-    <firstName>John </firstName>
+  <storeCode>69x420</storeCode>
+  <manager class="Salesperson">
+    <personCode>aa887a</personCode>
+    <firstName>John</firstName>
     <lastName>JohnnyDrip</lastName>
     <address>
       <street>360 NoScope Plaza</street>

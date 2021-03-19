@@ -1,100 +1,113 @@
-<UsedProduct>
-  <type>PU</type>
-  <name>Oculus Quest 2</name>
-  <price>249.99</price>
-</UsedProduct>
-<NewProduct>
-  <type>PN</type>
+<Product>
+  <code>8w9w90</code>
   <name>GamerStation2000</name>
-  <price>3999.99</price>
-</NewProduct>
-<GiftCard>
-  <type>PG</type>
-  <name>iTunes</name>
-  <price></price>
-</GiftCard>
-<NewProduct>
   <type>PN</type>
+  <basePrice>3999.99</basePrice>
+</Product>
+<Product>
+  <code>e6ta5e</code>
   <name>Nintendo DSi </name>
-  <price>84.99</price>
-</NewProduct>
-<NewProduct>
   <type>PN</type>
-  <name>Fortnite Skin</name>
-  <price>19.99</price>
-</NewProduct>
-<Service>
-  <type>SV</type>
-  <name>Virus Removal</name>
-  <price>34.99</price>
-</Service>
-<Service>
-  <type>SV</type>
-  <name>PC Repair</name>
-  <price>99.99</price>
-</Service>
-<NewProduct>
-  <type>PN</type>
+  <basePrice>84.99</basePrice>
+</Product>
+<Product>
+  <code>4fj3t9</code>
   <name>Call of Duty Cold War</name>
-  <price>69.99</price>
-</NewProduct>
-<Service>
-  <type>SV</type>
-  <name>Gamer Bus</name>
-  <price>299.99</price>
-</Service>
-<GiftCard>
-  <type>PG</type>
-  <name>Amazon</name>
-  <price></price>
-</GiftCard>
-<UsedProduct>
-  <type>PU</type>
-  <name>Valve Index</name>
-  <price>599.99</price>
-</UsedProduct>
-<Subscription>
-  <type>SB</type>
-  <name>Steam Ultra</name>
-  <price>39.99</price>
-</Subscription>
-<NewProduct>
   <type>PN</type>
-  <name>G-Fuel</name>
-  <price>10.99</price>
-</NewProduct>
-<GiftCard>
+  <basePrice>69.99</basePrice>
+</Product>
+<Product>
+  <code>7ye4cg</code>
+  <name>Fortnite Skin</name>
+  <type>PN</type>
+  <basePrice>19.99</basePrice>
+</Product>
+<Product>
+  <code>420blz</code>
+  <name>Amazon</name>
   <type>PG</type>
-  <name>Fortnite V-Bucks</name>
-  <price></price>
-</GiftCard>
-<GiftCard>
-  <type>PG</type>
+  <basePrice>0.0</basePrice>
+</Product>
+<Product>
+  <code>69o42o</code>
   <name>PlayStation Store</name>
-  <price></price>
-</GiftCard>
-<UsedProduct>
-  <type>PU</type>
+  <type>PG</type>
+  <basePrice>0.0</basePrice>
+</Product>
+<Product>
+  <code>8a39dr</code>
+  <name>iTunes</name>
+  <type>PG</type>
+  <basePrice>0.0</basePrice>
+</Product>
+<Product>
+  <code>daad3p</code>
+  <name>Fortnite V-Bucks</name>
+  <type>PG</type>
+  <basePrice>0.0</basePrice>
+</Product>
+<Product>
+  <code>badd8t</code>
   <name>Pokemon Arceus</name>
-  <price>59.99</price>
-</UsedProduct>
+  <type>PU</type>
+  <basePrice>59.99</basePrice>
+</Product>
+<Product>
+  <code>0ed5re</code>
+  <name>World of Warships</name>
+  <type>PU</type>
+  <basePrice>59.99</basePrice>
+</Product>
+<Product>
+  <code>1dc4o8</code>
+  <name>Oculus Quest 2</name>
+  <type>PU</type>
+  <basePrice>249.99</basePrice>
+</Product>
+<Product>
+  <code>40arte</code>
+  <name>Valve Index</name>
+  <type>PU</type>
+  <basePrice>599.99</basePrice>
+</Product>
 <Service>
-  <type>SV</type>
+  <code>qu4k39</code>
   <name>Console Cleaning</name>
-  <price>29.99</price>
+  <hourlyRate>29.99</hourlyRate>
+</Service>
+<Service>
+  <code>d00n13</code>
+  <name>Gamer Bus</name>
+  <hourlyRate>299.99</hourlyRate>
+</Service>
+<Service>
+  <code>six942</code>
+  <name>PC Repair</name>
+  <hourlyRate>99.99</hourlyRate>
 </Service>
 <Subscription>
-  <type>SB</type>
-  <name>PlayStation Now</name>
-  <price>79.99</price>
-</Subscription>
-<UsedProduct>
-  <type>PU</type>
-  <name>World of Warships</name>
-  <price>59.99</price>
-</UsedProduct>
-<Subscription>
-  <type>SB</type>
+  <code>426dda</code>
   <name>PlayStation Plus</name>
-  <price>59.99</price>
+  <annualFee>59.99</annualFee>
 </Subscription>
+<Subscription>
+  <code>d3dd69</code>
+  <name>Steam Ultra</name>
+  <annualFee>39.99</annualFee>
+</Subscription>
+<Subscription>
+  <code>35o6f6</code>
+  <name>PlayStation Now</name>
+  <annualFee>79.99</annualFee>
+</Subscription>
+<Product>
+  <code>12thi9</code>
+  <name>G-Fuel</name>
+  <type>PN</type>
+  <basePrice>10.99</basePrice>
+</Product>
+<Service>
+  <code>ret43e</code>
+  <name>Virus Removal</name>
+  <hourlyRate>34.99</hourlyRate>
+</Service>

@@ -10,31 +10,24 @@ package com.mgg;
  * @author zmain<br \>
  * Zach Main<br \>
  * zmain2@huskers.unl.edu<br \>
- * CSCE156<br \>
- *
+ * CSCE156
  */
 public class Store {
 	
-	private String code;
-	private Person manager;
-	private Address address;
+	private final String storeCode;
+	private final Person manager;
+	private final Address address;
 	
-	public Store(String code, Person manager, Address address) {
-		this.code = code;
+	public Store(String storeCode, Person manager, Address address) {
+		this.storeCode = storeCode;
 		this.manager = manager;
 		this.address = address;
 	}
 
-	/**
-	 * @return the Store code
-	 */
-	public String getCode() {
-		return code;
+	public String getStoreCode() {
+		return storeCode;
 	}
 
-	/**
-	 * @return the manager
-	 */
 	public Person getManager() {
 		return manager;
 	}

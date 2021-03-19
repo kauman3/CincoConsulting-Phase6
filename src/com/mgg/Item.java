@@ -1,9 +1,7 @@
 package com.mgg;
 
-import java.util.List;
-
 /**
- * This class models a sales item with a type, name, and price.
+ * This abstract class models an Item with a code and name.
  * 
  * @author kauman<br \>
  * Kyle Auman<br \>
@@ -12,46 +10,37 @@ import java.util.List;
  * @author zmain<br \>
  * Zach Main<br \>
  * zmain2@huskers.unl.edu<br \>
- * CSCE156<br \>
- *
+ * CSCE156
  */
-public class Item {
+public abstract class Item {
 	
-	private String type;
-	private String name;
-	private String price;
-	
-	public Item(String type, String name, String price) {
-		this.type = type;
+	public final String code;
+	public final String name;
+
+	public Item(String code, String name) {
+		super();
+		this.code = code;
 		this.name = name;
-		this.price = price;
 	}
 	
-	public Item(String type, String name) {
-		this.type = type;
-		this.name = name;
-		this.price = "";
+	public String getCode() {
+		return code;
 	}
 
-	/**
-	 * @return the type
-	 */
-	public String getType() {
-		return this.type;
-	}
-
-	/**
-	 * @return the name
-	 */
 	public String getName() {
-		return this.name;
+		return name;
 	}
 	
-	/**
-	 * @return the name
-	 */
-	public String getPrice() {
-		return this.price;
-	}
+	public abstract double getCost();
 	
+	public abstract double getTaxRate();
+
+	public double getTax() {
+		return this.getCost() * this.getTaxRate();
+	}
+
+	public double getTotalCost() {
+		return this.getCost() + this.getTax();
+	}
+
 }

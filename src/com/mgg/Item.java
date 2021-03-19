@@ -14,17 +14,17 @@ package com.mgg;
  */
 public abstract class Item {
 	
-	public final String code;
+	public final String itemCode;
 	public final String name;
 
-	public Item(String code, String name) {
+	public Item(String itemCode, String name) {
 		super();
-		this.code = code;
+		this.itemCode = itemCode;
 		this.name = name;
 	}
 	
-	public String getCode() {
-		return code;
+	public String getItemCode() {
+		return itemCode;
 	}
 
 	public String getName() {

@@ -5,31 +5,13 @@ package com.mgg;
  * @author kylea
  *
  */
-public class Product extends Item {
+public abstract class Product extends Item {
 	
-	//might need to abstract this further for each type
-	public final String type;
-	private final double basePrice;
-	
-	public Product(String code, String name, String type, double basePrice) {
+	public Product(String code, String name) {
 		super(code, name);
-		this.type = type;
-		this.basePrice = basePrice;
-	}
-	
-	public Product(String code, String name, String type) {
-		super(code, name);
-		this.type = type;
-		this.basePrice = 0;
 	}
 
-	@Override
-	public double getCost() {
-		return this.basePrice;
-	}
+	public abstract double getCost();
 
-	@Override
-	public double getTaxRate() {
-		return 0;
-	}
+	public abstract double getTaxRate();
 }

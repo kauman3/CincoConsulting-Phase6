@@ -53,4 +53,12 @@ public abstract class Person {
 		return emails;
 	}
 	
+	public abstract double getDiscountRate();
+	
+	public String toSting() {
+		return this.getFullName() + "(" +
+				   this.getEmails() + ")\n" +
+				   this.getAddress().toString();
+	}
+	
 }

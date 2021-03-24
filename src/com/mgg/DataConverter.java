@@ -5,13 +5,17 @@ import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
- * This is the main driver program that loads CSV files containing person, store, and item data, 
- * creates and ArrayList for each respective data type, and uses these ArrayLists to output XML 
- * files containing the data from the original CSV input files.
+ * This is the main driver program that loads CSV files containing person, store, item, 
+ * and sale data, creates an ArrayList for each respective data type, and uses these 
+ * ArrayLists to output XML files containing the data from the original CSV input files.
+ * 
+ * TODO: ask how to format items correctly (drop [] and ,)
+ * TODO: ask how to correctly use a formatted string (left align)
+ * 			how to tab over (last line of person report)
+ * TODO: ask if getSubtotal, getTotalTax, and getGrandTotal could be combined into one
  * 
  * @author kauman<br \>
  * Kyle Auman<br \>
@@ -22,7 +26,7 @@ import java.util.Scanner;
  * zmain2@huskers.unl.edu<br \>
  * CSCE156
  */
-public class DataConvertor {
+public class DataConverter {
 	
 	/**
 	 * Takes a CSV file with Person data and stores it as a list of persons
@@ -49,8 +53,12 @@ public class DataConvertor {
             	}
             	if(tokens[1].contentEquals("E")) {
             		persons.add(new Salesperson(tokens[0], tokens[3], tokens[2], address, emails));
+            	} else if (tokens[1].contentEquals("G")){
+            		persons.add(new GoldCustomer(tokens[0], tokens[3], tokens[2], address, emails));
+            	} else if (tokens[1].contentEquals("P")){
+            		persons.add(new PlatinumCustomer(tokens[0], tokens[3], tokens[2], address, emails));
             	} else {
-            		persons.add(new Customer(tokens[0], tokens[3], tokens[2], address, emails, tokens[1]));
+            		persons.add(new RegularCustomer(tokens[0], tokens[3], tokens[2], address, emails));
             	}
             }
             s.close();

@@ -42,5 +42,7 @@ public abstract class Item {
 	public double getTotalCost() {
 		return this.getCost() + this.getTax();
 	}
+	
+	public abstract String toString();
 
 }

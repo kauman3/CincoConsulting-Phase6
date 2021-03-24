@@ -1,6 +1,6 @@
 package com.mgg;
 
-public class GiftCard extends Product {
+public class GiftCard extends Item {
 	
 	private double amount;
 	
@@ -23,7 +23,15 @@ public class GiftCard extends Product {
 
 	@Override
 	public double getTaxRate() {
-		return 0;
+		return 0.0725;
 	}
-
+	
+	public String toString() {
+		String str = String.format("%s\n   (Gift Card #%s)%48s%10.2f\n", this.name,
+																	    this.itemCode,
+																	    "$",
+																	    this.getCost());
+		return str;
+	}
+	
 }

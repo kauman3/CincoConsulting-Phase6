@@ -1,10 +1,5 @@
 package com.mgg;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * This class models an Address with a street, city, state, zip, and country.
  * 
@@ -51,5 +46,15 @@ public class Address {
 
 	public String getCountry() {
 		return country;
+	}
+	
+	public String toString() {
+		String str = String.format("        %s\n"
+								 + "        %s %s %s %s\n", this.getStreet(),
+														  	this.getCity(),
+														  	this.getState(),
+														  	this.getZip(),
+														  	this.getCountry());
+		return str;
 	}
 }

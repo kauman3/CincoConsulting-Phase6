@@ -11,7 +11,10 @@ public class Salesperson extends Person {
 	public Salesperson(String personCode, String firstName, String lastName, Address address) {
 		super(personCode, firstName, lastName, address);
 	}
-	
-	
+
+	@Override
+	public double getDiscountRate() {
+		return 0.15;
+	}
 	
 }

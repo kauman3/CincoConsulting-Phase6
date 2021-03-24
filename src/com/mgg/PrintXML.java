@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
-
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
@@ -81,7 +79,9 @@ public class PrintXML {
     public static void itemsToXML(List<Item> items) {
     	
     	XStream xstream = new XStream(new DomDriver());
-    	xstream.alias("Product", Product.class);
+    	xstream.alias("New Product", NewProduct.class);
+    	xstream.alias("Used Product", NewProduct.class);
+    	xstream.alias("Gift Card", GiftCard.class);
     	xstream.alias("Service", Service.class);
     	xstream.alias("Subscription", Subscription.class);
         String xml = new String();

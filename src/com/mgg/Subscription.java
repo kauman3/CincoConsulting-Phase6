@@ -37,20 +37,28 @@ public class Subscription extends Item {
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
+	
+	public double getDays() {
+		return this.beginDate.until(this.endDate, ChronoUnit.DAYS) + 1l;
+	}
 
 	@Override
 	public double getCost() {
-		return (this.beginDate.until(this.endDate, ChronoUnit.DAYS) + 1l) / 365.0 * this.annualFee;
+		return this.getDays() / 365.0 * this.annualFee;
 	}
 
 	@Override
 	public double getTaxRate() {
 		return 0.0;
 	}
-
-	@Override
-	public double getTax() {
-		return 0;
+	
+	public String toString() {
+		String str = String.format("%s\n   (Subscription #%s %d days @$%.2f/yr)%30.2f\n", this.name, 
+																						  this.itemCode, 
+																						  (int) this.getDays(),
+																						  this.annualFee, 
+																						  this.getCost());
+		return str;
 	}
 
 }

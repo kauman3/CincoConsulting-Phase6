@@ -1,13 +1,13 @@
 package com.mgg;
 
-public class UsedProduct extends Product {
+public class UsedProduct extends Item {
 	
 	private final double basePrice;
 	private int quantity;
 	
 	public UsedProduct(String code, String name, double basePrice) {
 		super(code, name);
-		this.basePrice = basePrice;
+		this.basePrice = basePrice * 0.8;
 		this.quantity = 0;
 	}
 	
@@ -27,12 +27,20 @@ public class UsedProduct extends Product {
 
 	@Override
 	public double getCost() {
-		return this.basePrice * 0.8 * this.getQuantity();
+		return this.basePrice * this.quantity;
 	}
 
 	@Override
 	public double getTaxRate() {
-		return 0;
+		return 0.0725;
+	}
+	
+	public String toString() {
+		String str = String.format("%s\n   (Used Item #%s @$%.2f/ea)%30.2f\n", this.name,
+																			   this.itemCode, 
+																			   this.basePrice, 
+																			   this.getCost());
+		return str;
 	}
 	
 }

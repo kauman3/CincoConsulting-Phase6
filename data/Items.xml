@@ -2,19 +2,19 @@
   <itemCode>8w9w90</itemCode>
   <name>GamerStation2000</name>
   <basePrice>3999.99</basePrice>
-  <quantity>2</quantity>
+  <quantity>0</quantity>
 </Used_.0020Product>
 <Used_.0020Product>
   <itemCode>e6ta5e</itemCode>
   <name>Nintendo DSi</name>
   <basePrice>84.99</basePrice>
-  <quantity>1</quantity>
+  <quantity>0</quantity>
 </Used_.0020Product>
 <Used_.0020Product>
   <itemCode>4fj3t9</itemCode>
   <name>Call of Duty Cold War</name>
   <basePrice>69.99</basePrice>
-  <quantity>1</quantity>
+  <quantity>0</quantity>
 </Used_.0020Product>
 <Used_.0020Product>
   <itemCode>7ye4cg</itemCode>
@@ -40,19 +40,19 @@
 <Gift_.0020Card>
   <itemCode>daad3p</itemCode>
   <name>Fortnite V-Bucks</name>
-  <amount>19.99</amount>
+  <amount>0.0</amount>
 </Gift_.0020Card>
 <com.mgg.UsedProduct>
   <itemCode>badd8t</itemCode>
   <name>Pokemon Arceus</name>
   <basePrice>47.992000000000004</basePrice>
-  <quantity>3</quantity>
+  <quantity>0</quantity>
 </com.mgg.UsedProduct>
 <com.mgg.UsedProduct>
   <itemCode>0ed5re</itemCode>
   <name>World of Warships</name>
   <basePrice>47.992000000000004</basePrice>
-  <quantity>1</quantity>
+  <quantity>0</quantity>
 </com.mgg.UsedProduct>
 <com.mgg.UsedProduct>
   <itemCode>1dc4o8</itemCode>
@@ -70,26 +70,7 @@
   <itemCode>qu4k39</itemCode>
   <name>Console Cleaning</name>
   <hourlyRate>29.99</hourlyRate>
-  <employee class="com.mgg.Salesperson">
-    <personCode>7632l9</personCode>
-    <firstName>Michelle</firstName>
-    <lastName>Micah</lastName>
-    <address>
-      <street>0 Havey Avenue</street>
-      <city>Cleveland</city>
-      <state>OH</state>
-      <zip>44177</zip>
-      <country>US</country>
-    </address>
-    <emails>
-      <string>nmichelotti1@sbwire.com</string>
-      <string>nmichelotti1@vistaprint.com</string>
-      <string>nmichelotti1@gravatar.com</string>
-      <string>nmichelotti1@patch.com</string>
-    </emails>
-    <sales/>
-  </employee>
-  <numHours>5.5</numHours>
+  <numHours>0.0</numHours>
 </Service>
 <Service>
   <itemCode>d00n13</itemCode>
@@ -107,8 +88,6 @@
   <itemCode>426dda</itemCode>
   <name>PlayStation Plus</name>
   <annualFee>59.99</annualFee>
-  <beginDate>2021-03-10</beginDate>
-  <endDate>2022-03-10</endDate>
 </Subscription>
 <Subscription>
   <itemCode>d3dd69</itemCode>
@@ -124,7 +103,7 @@
   <itemCode>12thi9</itemCode>
   <name>G-Fuel</name>
   <basePrice>10.99</basePrice>
-  <quantity>3</quantity>
+  <quantity>0</quantity>
 </Used_.0020Product>
 <Service>
   <itemCode>ret43e</itemCode>

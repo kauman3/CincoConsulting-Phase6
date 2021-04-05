@@ -31,6 +31,73 @@ import java.util.Scanner;
  */
 public class DataConverter {
 	
+//	public static Address getAddress(String idType, String id) {
+//		//need to be able to change the query if it is a store or a person
+////		select 
+////			street, 
+////			city, 
+////		    state, 
+////		    zip, 
+////		    isoCode as country 
+////		    from Address a
+////		    join ?
+////		    on a.addressId = ?.addressId
+////		    join State s
+////		    on a.stateId = s.stateId
+////		    join Country c
+////		    on a.countryId = c.countryId;
+////		ps.setString(1, "Person p");
+////		ps.setString(2, "p");
+//	}
+	
+	public static List<String> getEmails(String personCode) {
+		
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+		List<String> emails = new ArrayList<>();
+		String query = "select"
+					 + "	email"
+					 + "    from Email e"
+					 + "    join Person p"
+					 + "    where e.personId = p.personId"
+					 + "    and p.personCode = ?;";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setString(1, personCode);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				emails.add(rs.getString("email"));
+			}
+		}  catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+		try {
+			if(rs != null && !rs.isClosed())
+				rs.close();
+			if(ps != null && !ps.isClosed())
+				ps.close();
+			if(conn != null && !conn.isClosed())
+				conn.close();
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		return emails;
+	}
+	
 	/**
 	 * Takes a CSV file with Person data and stores it as a list of persons
 	 * @param file
@@ -80,8 +147,8 @@ public class DataConverter {
 				String state = rs.getString("state");
 				int zip = rs.getInt("zip");
 				String country = rs.getString("country");
+				List<String> emails = getEmails(personCode);
             	Address address = new Address(street, city, state, zip, country);
-            	List<String> emails = new ArrayList<>();
             	if(personType.equals("E")) {
             		persons.add(new Salesperson(personCode, firstName, lastName, address, emails));
             	} else if (personType.equals("G")) {
@@ -259,80 +326,226 @@ public class DataConverter {
 		return items;
 	}
 	
+	public static Person getPerson(int personId, List<Person> persons) {
+		
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+		String query = "select"
+					 + "	personCode"
+					 + "    from Person p"
+					 + "    join SaleItem si"
+					 + "    on p.personId = si.employeeId"
+					 + "    where personId = ?;";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Person p = null;
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, personId);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				String personCode = rs.getString("personCode");
+				for(Person per : persons) {
+					if(personCode.equals(per.getPersonCode())) {
+						p = per;
+					}
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+		try {
+			if(rs != null && !rs.isClosed())
+				rs.close();
+			if(ps != null && !ps.isClosed())
+				ps.close();
+			if(conn != null && !conn.isClosed())
+				conn.close();
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		return p;
+	}
+	
+	public static void getItems(Sale sale, List<Item> items, List<Person> persons) {
+		
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+		String query = "select"
+					 + "	itemCode,"
+					 + "	quantity,"
+					 + "    amount,"
+					 + "    employeeId,"
+					 + "    numHours,"
+					 + "    beginDate,"
+					 + "    endDate"
+					 + "    from SaleItem si"
+					 + "    join Sale s"
+					 + "    on si.saleId = s.saleId"
+					 + "    join Item i\r\n"
+					 + "    on si.itemId = i.itemId"
+					 + "    where saleCode = ?;";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setString(1, sale.getSaleCode());
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String itemCode = rs.getString("itemCode");
+				for(Item i : items) {
+	        		if(itemCode.equals(i.getItemCode())) {
+	        			if(i instanceof Service) {
+	        				//make a get person function
+	        				int employeeId = rs.getInt("employeeId");
+	        				Person p = getPerson(employeeId, persons);
+	        				((Service) i).setEmployee(p);
+	        				double numHours = rs.getDouble("numHours");
+	        				((Service) i).setNumHours(numHours);
+	        			} else if(i instanceof Subscription) {
+	        				String beginDate = rs.getString("beginDate");
+	        				String endDate = rs.getString("endDate");
+	        				((Subscription) i).setBeginDate(LocalDate.parse(beginDate));
+	        				((Subscription) i).setEndDate(LocalDate.parse(endDate));
+	        			} else if(i instanceof NewProduct) {
+	        				int quantity = rs.getInt("quantity");
+	        				((NewProduct) i).setQuantity(quantity);
+	        			} else if(i instanceof UsedProduct) {
+	        				int quantity = rs.getInt("quantity");
+	        				((UsedProduct) i).setQuantity(quantity);
+	        			} else {
+	        				double amount = rs.getDouble("amount");
+	        				((GiftCard) i).setAmount(amount);
+	        			}
+	        			sale.addItem(i);
+	        		}
+	        	}
+			}
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+		try {
+			if(rs != null && !rs.isClosed())
+				rs.close();
+			if(ps != null && !ps.isClosed())
+				ps.close();
+			if(conn != null && !conn.isClosed())
+				conn.close();
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		return;
+	}	
+	
 	/**
 	 * TODO: add documentation and beautify
 	 * @param file
 	 * @return
 	 */
-	public static List<Sale> loadSaleData(String file, List<Person> persons, List<Store> stores, List<Item> items) {
+	public static List<Sale> loadSaleData(List<Person> persons, List<Store> stores, List<Item> items) {
     	
-		List<Sale> sales = new ArrayList<>();
+		Connection conn = null;
 		try {
-            Scanner s = new Scanner(new File(file));
-            String firstLine = s.nextLine();
-            String token[] = firstLine.split(",");
-            int n = Integer.parseInt(token[0]);
-            
-            for(int i=0; i<n; i++) {
-                String line = s.nextLine();
-                String tokens[] = line.split(",");
-                
-                Store store = null;
-                for(Store str : stores) {
-                	if(str.getStoreCode().contentEquals(tokens[1])) {
-                		store = str;
-                	}
-                }
-                Person customer = null;
-                Person salesperson = null;
-                for(Person p : persons) {
-                	if(p.getPersonCode().contentEquals(tokens[2])) {
-                		customer = p;
-                	}
-                	if(p.getPersonCode().contentEquals(tokens[3])) {
-                		salesperson = p;
-                	}
-                }
-                Sale sale = new Sale(tokens[0], store, customer, salesperson);
-                for(int j=4; j<tokens.length; j++) {
-                	for(Item it : items) {
-                		if(tokens[j].contentEquals(it.getItemCode())) {
-                			if(it instanceof Service) {
-                				for(Person p : persons) {
-                                	if(p.getPersonCode().contentEquals(tokens[j+1])) {
-                                		((Service) it).setEmployee(p);
-                                	}
-                				}
-                				((Service) it).setNumHours(Double.parseDouble(tokens[j+2]));
-                			} else if(it instanceof Subscription) {
-                				((Subscription) it).setBeginDate(LocalDate.parse(tokens[j+1]));
-                				((Subscription) it).setEndDate(LocalDate.parse(tokens[j+2]));
-                			} else if(it instanceof NewProduct) {
-                				((NewProduct) it).setQuantity(Integer.parseInt(tokens[j+1]));
-                			} else if(it instanceof UsedProduct) {
-                				((UsedProduct) it).setQuantity(Integer.parseInt(tokens[j+1]));
-                			} else {
-                				((GiftCard) it).setAmount(Double.parseDouble(tokens[j+1]));
-                			}
-                			sale.addItem(it);
-                		}
-                	}
-                }
-                sales.add(sale);
-            }
-            s.close();
-        } catch (FileNotFoundException fnfe) {
-            throw new RuntimeException(fnfe);
-        }
-    	return sales;
+			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+		String query = "select"
+					 + "	saleCode,"
+					 + "    storeCode,"
+					 + "    c.personCode as customerCode,"
+					 + "    e.personCode as salespersonCode"
+					 + "    from Sale s"
+					 + "    join Store st"
+					 + "    on s.storeId = st.storeId"
+					 + "    join Person c"
+					 + "    on s.customerId = c.personId"
+					 + "    join Person e"
+					 + "    on s.salespersonId = e.personId;";
+		List<Sale> sales = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String saleCode = rs.getString("saleCode");
+				String storeCode = rs.getString("storeCode");
+				String customerCode = rs.getString("customerCode");
+				String salespersonCode = rs.getString("salespersonCode");
+		        Store store = null;
+		        for(Store str : stores) {
+		        	if(str.getStoreCode().equals(storeCode)) {
+		        		store = str;
+		        	}
+		        }
+		        Person customer = null;
+		        Person salesperson = null;
+		        for(Person p : persons) {
+		        	if(p.getPersonCode().contentEquals(customerCode)) {
+		        		customer = p;
+		        	}
+		        	if(p.getPersonCode().contentEquals(salespersonCode)) {
+		        		salesperson = p;
+		        	}
+		        }
+		        Sale sale = new Sale(saleCode, store, customer, salesperson);
+		        getItems(sale, items, persons);
+		        sales.add(sale);
+		    }
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+		try {
+			if(rs != null && !rs.isClosed())
+				rs.close();
+			if(ps != null && !ps.isClosed())
+				ps.close();
+			if(conn != null && !conn.isClosed())
+				conn.close();
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		return sales;
     }
 	
 	public static void main(String[] args) {
         List<Person> persons = loadPersonData();
         List<Store> stores = loadStoreData(persons);
         List<Item> items = loadItemData();
-        String salesFile = "data/Sales.csv";
-        List<Sale> sales = loadSaleData(salesFile, persons, stores, items);
+        List<Sale> sales = loadSaleData(persons, stores, items);
         
         PrintXML.personsToXML(persons);
         PrintXML.storesToXML(stores);

@@ -1,5 +1,6 @@
 package com.mgg;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,6 +25,7 @@ public abstract class Person {
 	private final String lastName;
 	private final Address address;
 	private final List<String> emails;
+	private List<Sale> sales;
 	
 	public Person(String personCode, String firstName, String lastName, Address address, List<String> emails) {
 		this.personCode = personCode;
@@ -31,10 +33,16 @@ public abstract class Person {
 		this.lastName = lastName;
 		this.address = address;
 		this.emails = emails;
+		this.sales = new ArrayList<>();
 	}
 	
 	public Person(String personCode, String firstName, String lastName, Address address) {
 		this(personCode, firstName, lastName, address, Collections.emptyList());
+		this.sales = new ArrayList<>();
+	}
+	
+	public void addSale(Sale s) {
+		this.sales.add(s);
 	}
 
 	public String getPersonCode() {
@@ -51,6 +59,18 @@ public abstract class Person {
 
 	public List<String> getEmails() {
 		return emails;
+	}
+
+	public List<Sale> getSales() {
+		return sales;
+	}
+
+	public double getSalespersonTotal () {
+		double total = 0;
+		for(Sale s : sales) {
+			total += s.getGrandTotal();
+		}
+		return total;
 	}
 	
 	public abstract double getDiscountRate();

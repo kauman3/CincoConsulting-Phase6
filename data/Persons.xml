@@ -48,7 +48,7 @@
     <string>wleavold2@craigslist.org</string>
   </emails>
 </Salesperson>
-<Customer>
+<com.mgg.PlatinumCustomer>
   <personCode>beta4L</personCode>
   <firstName>Connor</firstName>
   <lastName>Zarya</lastName>
@@ -65,9 +65,8 @@
     <string>zcullington3@google.es</string>
     <string>zcullington3@google.pl</string>
   </emails>
-  <membership>P</membership>
-</Customer>
-<Customer>
+</com.mgg.PlatinumCustomer>
+<com.mgg.PlatinumCustomer>
   <personCode>48b5dc</personCode>
   <firstName>Larry</firstName>
   <lastName>West</lastName>
@@ -83,9 +82,8 @@
     <string>fleaming4@unblog.fr</string>
     <string>fleaming4@hugedomains.com</string>
   </emails>
-  <membership>P</membership>
-</Customer>
-<Customer>
+</com.mgg.PlatinumCustomer>
+<com.mgg.PlatinumCustomer>
   <personCode>abc123</personCode>
   <firstName>Stacy</firstName>
   <lastName>Summers</lastName>
@@ -101,9 +99,8 @@
     <string>bstammers5@mapy.cz</string>
     <string>bstammers5@cpanel.net</string>
   </emails>
-  <membership>P</membership>
-</Customer>
-<Customer>
+</com.mgg.PlatinumCustomer>
+<com.mgg.GoldCustomer>
   <personCode>tre43r</personCode>
   <firstName>John</firstName>
   <lastName>Smith</lastName>
@@ -119,9 +116,8 @@
     <string>guttley6@linkedin.com</string>
     <string>guttley6@latimes.com</string>
   </emails>
-  <membership>G</membership>
-</Customer>
-<Customer>
+</com.mgg.GoldCustomer>
+<com.mgg.GoldCustomer>
   <personCode>4321d7</personCode>
   <firstName>James</firstName>
   <lastName>Fernando</lastName>
@@ -138,9 +134,8 @@
     <string>fhalse7@fc2.com</string>
     <string>fhalse7@moonfruit.com</string>
   </emails>
-  <membership>G</membership>
-</Customer>
-<Customer>
+</com.mgg.GoldCustomer>
+<com.mgg.GoldCustomer>
   <personCode>f22d0b</personCode>
   <firstName>George</firstName>
   <lastName>Dennison</lastName>
@@ -156,9 +151,8 @@
     <string>dwitherbed8@pbs.org</string>
     <string>dwitherbed8@privacy.gov.au</string>
   </emails>
-  <membership>G</membership>
-</Customer>
-<Customer>
+</com.mgg.GoldCustomer>
+<com.mgg.RegularCustomer>
   <personCode>d78da4</personCode>
   <firstName>Solomon</firstName>
   <lastName>Kellen</lastName>
@@ -175,9 +169,8 @@
     <string>ksoloway9@cmu.edu</string>
     <string>ksoloway9@unicef.org</string>
   </emails>
-  <membership>C</membership>
-</Customer>
-<Customer>
+</com.mgg.RegularCustomer>
+<com.mgg.RegularCustomer>
   <personCode>87ttg5</personCode>
   <firstName>Mark</firstName>
   <lastName>Spice</lastName>
@@ -194,9 +187,8 @@
     <string>rantoshina@economist.com</string>
     <string>rantoshina@sfgate.com</string>
   </emails>
-  <membership>C</membership>
-</Customer>
-<Customer>
+</com.mgg.RegularCustomer>
+<com.mgg.RegularCustomer>
   <personCode>89a8a1</personCode>
   <firstName>Pepper</firstName>
   <lastName>Portia</lastName>
@@ -210,8 +202,7 @@
   <emails>
     <string>pepperportia@lax.edu</string>
   </emails>
-  <membership>C</membership>
-</Customer>
+</com.mgg.RegularCustomer>
 <Salesperson>
   <personCode>aa887a</personCode>
   <firstName>John</firstName>

@@ -1,10 +1,16 @@
 package com.mgg;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SalesReport {
 	
-
+	/**
+	 * TODO: use maps (3) for sales to person, sales to store, and items to sale
+	 * @param persons
+	 * @param sales
+	 */
 	public static void salespersonReport(List<Person> persons, List<Sale> sales) {
 		System.out.println("+-----------------------------------------------------+\n"
 						 + "| Salesperson Summary Report                          |\n"
@@ -14,17 +20,14 @@ public class SalesReport {
 		double grandTotal = 0;
 		for(Person p : persons) {
 			if(p instanceof Salesperson) {
-				int numSales = 0;
-				double total = 0;
 				for(Sale s : sales) {
 					if (s.getSalesperson().getPersonCode().contentEquals(p.getPersonCode())) {
-						numSales++;
-						total += s.getGrandTotal();
+						p.addSale(s);
 					}
 				}
-				totalSales += numSales;
-				grandTotal += total;
-				System.out.printf("%-31s%-11d$%10.2f\n", p.getFullName(), numSales, total);
+				System.out.printf("%-31s%-11d$%10.2f\n", p.getFullName(), p.getSales().size(), p.getSalespersonTotal());
+				grandTotal += p.getSalespersonTotal();
+				totalSales += p.getSales().size();
 			}
 		}
 		System.out.println("+-----------------------------------------------------+");
@@ -41,20 +44,17 @@ public class SalesReport {
 		int totalSales = 0;
 		double grandTotal = 0;
 		for(Store s : stores) {
-			int numSales = 0;
-			double total = 0;
 			for(Sale sale : sales) {
 				if(sale.getStore().getStoreCode().contentEquals(s.getStoreCode())) {
-					numSales++;
-					total += sale.getGrandTotal();
+					s.addSale(sale);
 				}
 			}
-			totalSales += numSales;
-			grandTotal += total;
+			totalSales += s.getSales().size();
+			grandTotal += s.getStoreTotal();
 			System.out.printf("%-11s%-31s%-11d$%10.2f\n", s.getStoreCode(),
 												s.getManager().getFullName(), 
-												numSales,
-												total);
+												s.getSales().size(),
+												s.getStoreTotal());
 		}
 		System.out.println("+----------------------------------------------------------------+");
 		System.out.printf("%43d%-10s$%10.2f\n", totalSales, "", grandTotal);

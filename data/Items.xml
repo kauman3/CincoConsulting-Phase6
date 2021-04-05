@@ -1,113 +1,133 @@
-<Product>
-  <code>8w9w90</code>
+<Used_.0020Product>
+  <itemCode>8w9w90</itemCode>
   <name>GamerStation2000</name>
-  <type>PN</type>
   <basePrice>3999.99</basePrice>
-</Product>
-<Product>
-  <code>e6ta5e</code>
+  <quantity>2</quantity>
+</Used_.0020Product>
+<Used_.0020Product>
+  <itemCode>e6ta5e</itemCode>
   <name>Nintendo DSi </name>
-  <type>PN</type>
   <basePrice>84.99</basePrice>
-</Product>
-<Product>
-  <code>4fj3t9</code>
+  <quantity>1</quantity>
+</Used_.0020Product>
+<Used_.0020Product>
+  <itemCode>4fj3t9</itemCode>
   <name>Call of Duty Cold War</name>
-  <type>PN</type>
   <basePrice>69.99</basePrice>
-</Product>
-<Product>
-  <code>7ye4cg</code>
+  <quantity>1</quantity>
+</Used_.0020Product>
+<Used_.0020Product>
+  <itemCode>7ye4cg</itemCode>
   <name>Fortnite Skin</name>
-  <type>PN</type>
   <basePrice>19.99</basePrice>
-</Product>
-<Product>
-  <code>420blz</code>
+  <quantity>0</quantity>
+</Used_.0020Product>
+<Gift_.0020Card>
+  <itemCode>420blz</itemCode>
   <name>Amazon</name>
-  <type>PG</type>
-  <basePrice>0.0</basePrice>
-</Product>
-<Product>
-  <code>69o42o</code>
+  <amount>0.0</amount>
+</Gift_.0020Card>
+<Gift_.0020Card>
+  <itemCode>69o42o</itemCode>
   <name>PlayStation Store</name>
-  <type>PG</type>
-  <basePrice>0.0</basePrice>
-</Product>
-<Product>
-  <code>8a39dr</code>
+  <amount>0.0</amount>
+</Gift_.0020Card>
+<Gift_.0020Card>
+  <itemCode>8a39dr</itemCode>
   <name>iTunes</name>
-  <type>PG</type>
-  <basePrice>0.0</basePrice>
-</Product>
-<Product>
-  <code>daad3p</code>
+  <amount>0.0</amount>
+</Gift_.0020Card>
+<Gift_.0020Card>
+  <itemCode>daad3p</itemCode>
   <name>Fortnite V-Bucks</name>
-  <type>PG</type>
-  <basePrice>0.0</basePrice>
-</Product>
-<Product>
-  <code>badd8t</code>
+  <amount>19.99</amount>
+</Gift_.0020Card>
+<com.mgg.UsedProduct>
+  <itemCode>badd8t</itemCode>
   <name>Pokemon Arceus</name>
-  <type>PU</type>
-  <basePrice>59.99</basePrice>
-</Product>
-<Product>
-  <code>0ed5re</code>
+  <basePrice>47.992000000000004</basePrice>
+  <quantity>3</quantity>
+</com.mgg.UsedProduct>
+<com.mgg.UsedProduct>
+  <itemCode>0ed5re</itemCode>
   <name>World of Warships</name>
-  <type>PU</type>
-  <basePrice>59.99</basePrice>
-</Product>
-<Product>
-  <code>1dc4o8</code>
+  <basePrice>47.992000000000004</basePrice>
+  <quantity>1</quantity>
+</com.mgg.UsedProduct>
+<com.mgg.UsedProduct>
+  <itemCode>1dc4o8</itemCode>
   <name>Oculus Quest 2</name>
-  <type>PU</type>
-  <basePrice>249.99</basePrice>
-</Product>
-<Product>
-  <code>40arte</code>
+  <basePrice>199.99200000000002</basePrice>
+  <quantity>0</quantity>
+</com.mgg.UsedProduct>
+<com.mgg.UsedProduct>
+  <itemCode>40arte</itemCode>
   <name>Valve Index</name>
-  <type>PU</type>
-  <basePrice>599.99</basePrice>
-</Product>
+  <basePrice>479.992</basePrice>
+  <quantity>0</quantity>
+</com.mgg.UsedProduct>
 <Service>
-  <code>qu4k39</code>
+  <itemCode>qu4k39</itemCode>
   <name>Console Cleaning</name>
   <hourlyRate>29.99</hourlyRate>
+  <employee class="com.mgg.Salesperson">
+    <personCode>7632l9</personCode>
+    <firstName>Michelle</firstName>
+    <lastName>Micah</lastName>
+    <address>
+      <street>0 Havey Avenue</street>
+      <city>Cleveland</city>
+      <state>OH</state>
+      <zip>44177</zip>
+      <country>US</country>
+    </address>
+    <emails>
+      <string>nmichelotti1@sbwire.com</string>
+      <string>nmichelotti1@vistaprint.com</string>
+      <string>nmichelotti1@gravatar.com</string>
+      <string>nmichelotti1@patch.com</string>
+    </emails>
+  </employee>
+  <numHours>5.5</numHours>
 </Service>
 <Service>
-  <code>d00n13</code>
+  <itemCode>d00n13</itemCode>
   <name>Gamer Bus</name>
   <hourlyRate>299.99</hourlyRate>
+  <numHours>0.0</numHours>
 </Service>
 <Service>
-  <code>six942</code>
+  <itemCode>six942</itemCode>
   <name>PC Repair</name>
   <hourlyRate>99.99</hourlyRate>
+  <numHours>0.0</numHours>
 </Service>
 <Subscription>
-  <code>426dda</code>
+  <itemCode>426dda</itemCode>
   <name>PlayStation Plus</name>
   <annualFee>59.99</annualFee>
+  <beginDate>2021-03-10</beginDate>
+  <endDate>2022-03-10</endDate>
 </Subscription>
 <Subscription>
-  <code>d3dd69</code>
+  <itemCode>d3dd69</itemCode>
   <name>Steam Ultra</name>
   <annualFee>39.99</annualFee>
 </Subscription>
 <Subscription>
-  <code>35o6f6</code>
+  <itemCode>35o6f6</itemCode>
   <name>PlayStation Now</name>
   <annualFee>79.99</annualFee>
 </Subscription>
-<Product>
-  <code>12thi9</code>
+<Used_.0020Product>
+  <itemCode>12thi9</itemCode>
   <name>G-Fuel</name>
-  <type>PN</type>
   <basePrice>10.99</basePrice>
-</Product>
+  <quantity>3</quantity>
+</Used_.0020Product>
 <Service>
-  <code>ret43e</code>
+  <itemCode>ret43e</itemCode>
   <name>Virus Removal</name>
   <hourlyRate>34.99</hourlyRate>
+  <numHours>0.0</numHours>
 </Service>

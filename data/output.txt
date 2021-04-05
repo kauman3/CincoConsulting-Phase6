@@ -1,34 +1,35 @@
 +-----------------------------------------------------+
 | Salesperson Summary Report                          |
 +-----------------------------------------------------+
-Salesperson                    # Sales    Grand Total    
-Quinn, Jeffrey                   1          $      8,671.13
-Michelle, Micah                  3          $      322.51
-Levi, Yip                        1          $      12.87
-John, JohnnyDrip                 0          $      0
-Superman, Yerp                   1          $      21.44
+Salesperson                      # Sales    Grand Total    
+Jeffrey, Quinn                   1          $      7,804.02
+Michelle, Micah                  3          $      360.62
+Levi, Yip                        0          $      0
+Superman, Yerp          	 1          $      21.44
+John, JohnnyDrip                 1          $      146.69
 Young, Thug                      0          $      0
 Gunna, Wunna                     0          $      0
 Little, Keed                     0          $      0
+
         				
 +-----------------------------------------------------+				
 									
 									
 										  
 									     
-                                 6          $      9,027.95			   
+                                 6          $      8,332.77			   
 									   
 +----------------------------------------------------------------+	         
 | Store Sales Summary Report                                     |	     
 +----------------------------------------------------------------+               
-Store      Manager                        # Sales    Grand Total    
-12ed32     Quinn, Jeffrey                  1          $   8,671.13
+Store      Manager                         # Sales    Grand Total    
+12ed32     Quinn, Jeffrey                  1          $   7,804.02
 94pf32     John, JohnnyDrip                1          $   21.44
 7e45ds     John, JohnnyDrip                0          $   0.00
 92sf34     Quinn, Jeffrey                  0          $   0.00
-69x420     Quinn, Jeffrey                  4          $   335.38
+69x420     Quinn, Jeffrey                  4          $   507.32
 +----------------------------------------------------------------+
-                                           6          $   9,027.95
+                                           6          $   8,332.77
 
 Sale  #Sale1xx
 Store #12ed32
@@ -53,7 +54,8 @@ Nintendo DSi
                      					     -=-=-=-=-=-
                                                     Subtotal $    8,084.97
                                                          Tax $    586.16
-                                                 Grand Total $    8,671.13
+					       Discount(10%) $	 -867.11
+                                                 Grand Total $    7,804.02
 ----------------------------------------------------------------------------
 Sale  #Sale2xx
 Store #94pf32
@@ -61,10 +63,6 @@ Customer: Mark Spice(spiceymark@gmail.com, spiceymark@cox.net)
 	  342 5th Street
 	  Fort Wurth CO 80525 US
  
-          
-
-
-
 
 Sales Person: 
 Superman, Yerp (Yerpsuper@firefox.com)
@@ -77,7 +75,7 @@ Fortnite V-Bucks
     (Giftcard #daad3p)				             $    19.99
                      					     -=-=-=-=-=-
                                                     Subtotal $    19.99
-                                                         Tax $    0.00
+                                                         Tax $    1.45
                                                  Grand Total $    21.44
 ----------------------------------------------------------------------------
 Sale #Sae321x
@@ -88,19 +86,21 @@ Customer: John Smith(johnnysmith3@gmail.con, johnnysmith3@linked.com, johnnysmit
 
 
 Salesperson:
-Yip, Levi (leviyip@gmail.com, leviyip@hotmail.com)	
-	69999 Strudel Road
-        Nowhere IN 47306 US
+John, JohnnyDrip (JohnnyDrip@gman.com)	
+	360 NoScope Plaza
+        Wichita KS 67230 US 
+
 
 
 Item                                                               Total
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-                          -=-=-=-=-=-
 Pokemon Arceus
-    (Used Product #badd8t @$59.99/ea)		             $    12.00
+    (Used Product #badd8t @$47.99/ea)		             $    143.98
                      					     -=-=-=-=-=-
-                                                    Subtotal $    12.00
-                                                         Tax $    0.87
-                                                 Grand Total $    12.87
+                                                    Subtotal $    143.98
+                                                         Tax $    10.44
+					       Discount (5%) $	 -7.72
+                                                 Grand Total $    146.69
 ----------------------------------------------------------------------------
 Sale #Sae432x
 Store #69x420
@@ -116,17 +116,18 @@ Salesperson: Michelle, Micah (nmigjrkle@gmail.com, michal1@ewksljf.com, ndjkaslf
 Item                                                               Total
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-                          -=-=-=-=-=-
 Console Cleaning
-    (Service #qu4k39 @$29.99/hr)		             $    149.95
+    (Service #qu4k39 @$29.99/hr)		             $    164.95
                      					     -=-=-=-=-=-
-                                                    Subtotal $    149.95
-                                                         Tax $    0.00
-                                                 Grand Total $    149.95
+                                                    Subtotal $    164.95
+                                                         Tax $    4.70
+					      Discount (10%) $   -16.96
+                                                 Grand Total $    152.68
 ----------------------------------------------------------------------------
 Sale #SL91x
 Store #69x420
-Customer: Portia, Pepper (peppington@gmail.com, peppington@cox.net)
-          4123 Hooray Circle
-          Toledo OH 43656 US
+Customer: Summers, Stacy (stacysummer12@gmail.com, stacysummer12@hotmail.com, stacysummer12@cox.net)
+          31 Lake Michigan Drive
+          Rip VA 24040 US
 
 Salesperson: Michelle, Micah (nmigjrkle@gmail.com, michal1@ewksljf.com, ndjkaslf@burner.com, asldkjf@gmail.com)
              132 Street Street
@@ -135,11 +136,12 @@ Salesperson: Michelle, Micah (nmigjrkle@gmail.com, michal1@ewksljf.com, ndjkaslf
 Item                                                               Total
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-                          -=-=-=-=-=-
 Playstation Plus
-    (Subscription #426dda(365 days) @$59.99/year)            $    59.99
+    (Subscription #426dda(366 days) @$59.99/year)            $    60.15
                      					     -=-=-=-=-=-
-                                                    Subtotal $    59.99
+                                                    Subtotal $    60.15
                                                          Tax $    0.00
-                                                 Grand Total $    59.99
+					      Discount (10%) $   -6.02
+                                                 Grand Total $    54.14
 ----------------------------------------------------------------------------
 Sale #SAL9x
 Store #69x420
@@ -155,16 +157,17 @@ Salesperson: Michelle, Micah (nmigjrkle@gmail.com, michal1@ewksljf.com, ndjkaslf
 Item                                                               Total
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-                          -=-=-=-=-=-
 Call of Duty Cold War
-    (New Product #4fj3t9 @$69.99/ea)	            	     $    59.99
+    (New Product #4fj3t9 @$69.99/ea)	            	     $    69.99
 G-Fuel
      (New Product #12thi9 @$10.99/ea)			     $    32.97
 World of Warships
-     (Used Product #0ed5re @$59.99/ea)  		     $    12.00
+     (Used Product #0ed5re @$47.99/ea)  		     $    47.99
 
                      					     -=-=-=-=-=-
-                                                    Subtotal $    104.96
-                                                         Tax $    7.61
-                                                 Grand Total $    112.57
+                                                    Subtotal $    150.95
+                                                         Tax $    10.94
+				  	       Discount (5%) $   -8.09
+                                                 Grand Total $    153.80
 ----------------------------------------------------------------------------
 
 

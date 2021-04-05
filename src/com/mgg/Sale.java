@@ -67,7 +67,6 @@ public class Sale {
 		return str;
 	}
 
-	//TODO: ask at OH: could these three be combined into one?
 	public double getSubtotal() {
 		double subTotal = 0;
 		for(Item i : this.items) {
@@ -104,17 +103,17 @@ public class Sale {
 								 + "%70s%10.2f\n"
 								 + "%62s%.2f%s%10.2f\n"
 								 + "%70s%10.2f\n", this.getSaleCode(), 
-												    this.store.getStoreCode(),
-												    this.customer.toSting(),
-												    this.salesperson.toSting(),
-												    "Total", 
-												    "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-", 
-												    "-=-=-=-=-=-",
-												    this.itemsToString(),		//this.items.toString()
-												    "Subtotal $", this.getSubtotal(), 
-												    "Tax $", this.getTotalTax(), 
-												    "Discount (", this.customer.getDiscountRate() * 100, "%) $", this.getDiscount(),
-												    "Grand Total $", this.getGrandTotal());
+												   this.store.getStoreCode(),
+												   this.customer.toSting(),
+												   this.salesperson.toSting(),
+												   "Total", 
+												   "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-", 
+												   "-=-=-=-=-=-",
+												   this.itemsToString(),
+												   "Subtotal $", this.getSubtotal(), 
+												   "Tax $", this.getTotalTax(), 
+												   "Discount (", this.customer.getDiscountRate() * 100, "%) $", this.getDiscount(),
+												   "Grand Total $", this.getGrandTotal());
 		return str;
 	}
 

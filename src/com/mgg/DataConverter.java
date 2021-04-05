@@ -12,10 +12,8 @@ import java.util.Scanner;
  * and sale data, creates an ArrayList for each respective data type, and uses these 
  * ArrayLists to output XML files containing the data from the original CSV input files.
  * 
- * TODO: ask how to format items correctly (drop [] and ,)
  * TODO: ask how to correctly use a formatted string (left align)
  * 			how to tab over (last line of person report)
- * TODO: ask if getSubtotal, getTotalTax, and getGrandTotal could be combined into one
  * 
  * @author kauman<br \>
  * Kyle Auman<br \>

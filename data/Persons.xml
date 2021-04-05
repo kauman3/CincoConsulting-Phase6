@@ -13,6 +13,7 @@
     <string>squarry0@reverbnation.com</string>
     <string>squarry0@salon.com</string>
   </emails>
+  <sales/>
 </Salesperson>
 <Salesperson>
   <personCode>7632l9</personCode>
@@ -31,6 +32,7 @@
     <string>nmichelotti1@gravatar.com</string>
     <string>nmichelotti1@patch.com</string>
   </emails>
+  <sales/>
 </Salesperson>
 <Salesperson>
   <personCode>aa887b</personCode>
@@ -47,6 +49,7 @@
     <string>wleavold2@npr.org</string>
     <string>wleavold2@craigslist.org</string>
   </emails>
+  <sales/>
 </Salesperson>
 <com.mgg.PlatinumCustomer>
   <personCode>beta4L</personCode>
@@ -65,6 +68,7 @@
     <string>zcullington3@google.es</string>
     <string>zcullington3@google.pl</string>
   </emails>
+  <sales/>
 </com.mgg.PlatinumCustomer>
 <com.mgg.PlatinumCustomer>
   <personCode>48b5dc</personCode>
@@ -82,6 +86,7 @@
     <string>fleaming4@unblog.fr</string>
     <string>fleaming4@hugedomains.com</string>
   </emails>
+  <sales/>
 </com.mgg.PlatinumCustomer>
 <com.mgg.PlatinumCustomer>
   <personCode>abc123</personCode>
@@ -99,6 +104,7 @@
     <string>bstammers5@mapy.cz</string>
     <string>bstammers5@cpanel.net</string>
   </emails>
+  <sales/>
 </com.mgg.PlatinumCustomer>
 <com.mgg.GoldCustomer>
   <personCode>tre43r</personCode>
@@ -116,6 +122,7 @@
     <string>guttley6@linkedin.com</string>
     <string>guttley6@latimes.com</string>
   </emails>
+  <sales/>
 </com.mgg.GoldCustomer>
 <com.mgg.GoldCustomer>
   <personCode>4321d7</personCode>
@@ -134,6 +141,7 @@
     <string>fhalse7@fc2.com</string>
     <string>fhalse7@moonfruit.com</string>
   </emails>
+  <sales/>
 </com.mgg.GoldCustomer>
 <com.mgg.GoldCustomer>
   <personCode>f22d0b</personCode>
@@ -151,6 +159,7 @@
     <string>dwitherbed8@pbs.org</string>
     <string>dwitherbed8@privacy.gov.au</string>
   </emails>
+  <sales/>
 </com.mgg.GoldCustomer>
 <com.mgg.RegularCustomer>
   <personCode>d78da4</personCode>
@@ -169,6 +178,7 @@
     <string>ksoloway9@cmu.edu</string>
     <string>ksoloway9@unicef.org</string>
   </emails>
+  <sales/>
 </com.mgg.RegularCustomer>
 <com.mgg.RegularCustomer>
   <personCode>87ttg5</personCode>
@@ -187,6 +197,7 @@
     <string>rantoshina@economist.com</string>
     <string>rantoshina@sfgate.com</string>
   </emails>
+  <sales/>
 </com.mgg.RegularCustomer>
 <com.mgg.RegularCustomer>
   <personCode>89a8a1</personCode>
@@ -202,6 +213,7 @@
   <emails>
     <string>pepperportia@lax.edu</string>
   </emails>
+  <sales/>
 </com.mgg.RegularCustomer>
 <Salesperson>
   <personCode>aa887a</personCode>
@@ -217,6 +229,7 @@
   <emails>
     <string>JohnnyDrip@gman.com</string>
   </emails>
+  <sales/>
 </Salesperson>
 <Salesperson>
   <personCode>fdc227</personCode>
@@ -232,6 +245,7 @@
   <emails>
     <string>Yerpsuper@firefox.com</string>
   </emails>
+  <sales/>
 </Salesperson>
 <Salesperson>
   <personCode>abc124</personCode>
@@ -247,6 +261,7 @@
   <emails>
     <string>SlimeyYSL@gmail.com</string>
   </emails>
+  <sales/>
 </Salesperson>
 <Salesperson>
   <personCode>fdc269</personCode>
@@ -262,6 +277,7 @@
   <emails>
     <string>YoungGunna@gmail.com</string>
   </emails>
+  <sales/>
 </Salesperson>
 <Salesperson>
   <personCode>yoo420</personCode>
@@ -277,4 +293,5 @@
   <emails>
     <string>wavyKeed@gmail.com</string>
   </emails>
+  <sales/>
 </Salesperson>

@@ -2,6 +2,11 @@ package com.mgg;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,38 +36,80 @@ public class DataConverter {
 	 * @param file
 	 * @return
 	 */
-	public static List<Person> loadPersonData(String file) {
+	public static List<Person> loadPersonData() {
 		
-		List<Person> persons = new ArrayList<>();
+		Connection conn = null;
 		try {
-            Scanner s = new Scanner(new File(file));
-            String firstLine = s.nextLine();
-            String token[] = firstLine.split(",");
-            int n = Integer.parseInt(token[0]);
-            
-            for(int i=0; i<n; i++) {
-                String line = s.nextLine();
-                String tokens[] = line.split(",");
-                
-            	Address address = new Address(tokens[4], tokens[5], tokens[6], Integer.parseInt(tokens[7]), tokens[8]);
+			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+		String query = "select"
+					 + "	personCode,"
+					 + "	personType,"
+					 + "	firstName,"
+					 + "	lastName,"
+					 + "	street,"
+					 + "	city,"
+					 + "	state,"
+					 + "	zip,"
+					 + "	isoCode as country"
+					 + "	from Person p"
+					 + "	join Address a"
+					 + "	on p.addressId = a.addressId"
+					 + "	join State s"
+					 + "	on a.stateId = s.stateId"
+					 + "	join Country c"
+					 + "	on a.countryId = c.countryId;";
+		List<Person> persons = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String personCode = rs.getString("personCode");
+				String personType = rs.getString("personType");
+				String firstName = rs.getString("firstName");
+				String lastName = rs.getString("lastName");
+				String street = rs.getString("street");
+				String city = rs.getString("city");
+				String state = rs.getString("state");
+				int zip = rs.getInt("zip");
+				String country = rs.getString("country");
+            	Address address = new Address(street, city, state, zip, country);
             	List<String> emails = new ArrayList<>();
-            	for(int j=9; j<tokens.length; j++) {
-            		emails.add(tokens[j]);
-            	}
-            	if(tokens[1].contentEquals("E")) {
-            		persons.add(new Salesperson(tokens[0], tokens[3], tokens[2], address, emails));
-            	} else if (tokens[1].contentEquals("G")){
-            		persons.add(new GoldCustomer(tokens[0], tokens[3], tokens[2], address, emails));
-            	} else if (tokens[1].contentEquals("P")){
-            		persons.add(new PlatinumCustomer(tokens[0], tokens[3], tokens[2], address, emails));
+            	if(personType.equals("E")) {
+            		persons.add(new Salesperson(personCode, firstName, lastName, address, emails));
+            	} else if (personType.equals("G")) {
+            		persons.add(new GoldCustomer(personCode, firstName, lastName, address, emails));
+            	} else if (personType.equals("P")) {
+            		persons.add(new PlatinumCustomer(personCode, firstName, lastName, address, emails));
             	} else {
-            		persons.add(new RegularCustomer(tokens[0], tokens[3], tokens[2], address, emails));
+            		persons.add(new RegularCustomer(personCode, firstName, lastName, address, emails));
             	}
             }
-            s.close();
-        } catch (FileNotFoundException fnfe) {
-            throw new RuntimeException(fnfe);
-        }
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+		try {
+			if(rs != null && !rs.isClosed())
+				rs.close();
+			if(ps != null && !ps.isClosed())
+				ps.close();
+			if(conn != null && !conn.isClosed())
+				conn.close();
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 		return persons;
 	}
 	
@@ -71,28 +118,73 @@ public class DataConverter {
      * @param file
      * @return
      */
-	public static List<Store> loadStoreData(String file, List<Person> persons) {
+	public static List<Store> loadStoreData(List<Person> persons) {
 		
-		List<Store> stores = new ArrayList<>();
+		Connection conn = null;
 		try {
-            Scanner s = new Scanner(new File(file));
-            String firstLine = s.nextLine();
-            String token[] = firstLine.split(",");
-            int n = Integer.parseInt(token[0]);
-            
-            for(int i=0; i<n; i++) {
-                String line = s.nextLine();
-                String tokens[] = line.split(",");
-                for(Person p : persons) {
-                	if(p.getPersonCode().contentEquals(tokens[1])) {
-                		stores.add(new Store(tokens[0], p, new Address(tokens[2], tokens[3], tokens[4], Integer.parseInt(tokens[5]), tokens[6])));
-                    }
-                }
-            }
-            s.close();
-        } catch (FileNotFoundException fnfe) {
-            throw new RuntimeException(fnfe);
-        }
+			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+		String query = "select"
+					 + "	storeCode,"
+					 + "    personCode,"
+					 + "	street,"
+					 + "    city,"
+					 + "    state,"
+					 + "    zip,"
+					 + "    isoCode as country"
+					 + "    from Store s"
+					 + "    join Person p"
+					 + "    on s.managerId = p.personId"
+					 + "    join Address a"
+					 + "    on s.addressId = a.addressId"
+					 + "    join State state"
+					 + "    on a.stateId = state.stateId"
+					 + "    join Country c"
+					 + "    on a.countryId = c.countryId;";
+		List<Store> stores = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String storeCode = rs.getString("storeCode");
+				String personCode = rs.getString("p.personCode");
+				String street = rs.getString("street");
+				String city = rs.getString("city");
+				String state = rs.getString("state.state");
+				int zip = rs.getInt("zip");
+				String country = rs.getString("country");
+	            for(Person p : persons) {
+	            	if(p.getPersonCode().contentEquals(personCode)) {
+	            		stores.add(new Store(storeCode, p, new Address(street, city, state, zip, country)));
+	                }
+	            }
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+		try {
+			if(rs != null && !rs.isClosed())
+				rs.close();
+			if(ps != null && !ps.isClosed())
+				ps.close();
+			if(conn != null && !conn.isClosed())
+				conn.close();
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 		return stores;
 	}
 	
@@ -101,35 +193,69 @@ public class DataConverter {
      * @param file
      * @return
      */
-	public static List<Item> loadItemData(String file) {
+	public static List<Item> loadItemData() {
 		
-		List<Item> items = new ArrayList<>();
+		Connection conn = null;
 		try {
-            Scanner s = new Scanner(new File(file));
-            String firstLine = s.nextLine();
-            String token[] = firstLine.split(",");
-            int n = Integer.parseInt(token[0]);
-            
-            for(int i=0; i<n; i++) {
-                String line = s.nextLine();
-                String tokens[] = line.split(",");
-
-                if(tokens[1].contentEquals("SV")) {
-                	items.add(new Service(tokens[0], tokens[2], Double.parseDouble(tokens[3])));
-                } else if(tokens[1].contentEquals("SB")) {
-                	items.add(new Subscription(tokens[0], tokens[2], Double.parseDouble(tokens[3])));
-                } else if(tokens[1].contentEquals("PN")) {
-                	items.add(new NewProduct(tokens[0], tokens[2], Double.parseDouble(tokens[3])));
-                } else if(tokens[1].contentEquals("PU")) {
-                	items.add(new UsedProduct(tokens[0], tokens[2], Double.parseDouble(tokens[3])));
+			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+		String query = "select"
+					 + "	itemCode,"
+					 + "    itemType,"
+					 + "    itemName,"
+					 + "    basePrice,"
+					 + "    hourlyRate,"
+					 + "    annualFee"
+					 + "    from Item;";
+		List<Item> items = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String itemCode = rs.getString("itemCode");
+				String itemType = rs.getString("itemType");
+				String itemName = rs.getString("itemName");
+				if(itemType.equals("SV")) {
+					double hourlyRate = rs.getDouble("hourlyRate");
+                	items.add(new Service(itemCode, itemName, hourlyRate));
+                } else if(itemType.equals("SB")) {
+    				double annualFee = rs.getDouble("annualFee");
+                	items.add(new Subscription(itemCode, itemName, annualFee));
+                } else if(itemType.equals("PN")) {
+    				double basePrice = rs.getDouble("basePrice");
+                	items.add(new NewProduct(itemCode, itemName, basePrice));
+                } else if(itemType.equals("PU")) {
+    				double basePrice = rs.getDouble("basePrice");
+                	items.add(new UsedProduct(itemCode, itemName, basePrice));
                 } else {
-                	items.add(new GiftCard(tokens[0], tokens[2]));
+                	items.add(new GiftCard(itemCode, itemName));
                 }
-            }
-            s.close();
-        } catch (FileNotFoundException fnfe) {
-            throw new RuntimeException(fnfe);
-        }
+			}
+        } catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+		try {
+			if(rs != null && !rs.isClosed())
+				rs.close();
+			if(ps != null && !ps.isClosed())
+				ps.close();
+			if(conn != null && !conn.isClosed())
+				conn.close();
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 		return items;
 	}
 	
@@ -202,12 +328,9 @@ public class DataConverter {
     }
 	
 	public static void main(String[] args) {
-		String personsFile = "data/Persons.csv";
-        List<Person> persons = loadPersonData(personsFile);
-        String storesFile = "data/Stores.csv";
-        List<Store> stores = loadStoreData(storesFile, persons);
-        String itemsFile = "data/Items.csv";
-        List<Item> items = loadItemData(itemsFile);
+        List<Person> persons = loadPersonData();
+        List<Store> stores = loadStoreData(persons);
+        List<Item> items = loadItemData();
         String salesFile = "data/Sales.csv";
         List<Sale> sales = loadSaleData(salesFile, persons, stores, items);
         

@@ -15,14 +15,16 @@
       <string>squarry0@reverbnation.com</string>
       <string>squarry0@salon.com</string>
     </emails>
+    <sales/>
   </manager>
   <address>
     <street>264 Corben Center</street>
     <city>Huntsville</city>
-    <state>Alabama</state>
+    <state>AL</state>
     <zip>35895</zip>
     <country>US</country>
   </address>
+  <sales/>
 </Store>
 <Store>
   <storeCode>94pf32</storeCode>
@@ -40,14 +42,16 @@
     <emails>
       <string>JohnnyDrip@gman.com</string>
     </emails>
+    <sales/>
   </manager>
   <address>
     <street>703 Iowa Pass</street>
     <city>Mobile</city>
-    <state>Alabama</state>
+    <state>AL</state>
     <zip>36689</zip>
     <country>US</country>
   </address>
+  <sales/>
 </Store>
 <Store>
   <storeCode>73668b</storeCode>
@@ -66,14 +70,16 @@
       <string>squarry0@reverbnation.com</string>
       <string>squarry0@salon.com</string>
     </emails>
+    <sales/>
   </manager>
   <address>
     <street>25 Old Shore Alley</street>
     <city>Trenton</city>
-    <state>New Jersey</state>
+    <state>NJ</state>
     <zip>8603</zip>
     <country>US</country>
   </address>
+  <sales/>
 </Store>
 <Store>
   <storeCode>96f2cf</storeCode>
@@ -92,14 +98,16 @@
       <string>squarry0@reverbnation.com</string>
       <string>squarry0@salon.com</string>
     </emails>
+    <sales/>
   </manager>
   <address>
     <street>60827 Oak Way</street>
     <city>Cincinnati</city>
-    <state>Ohio</state>
+    <state>OH</state>
     <zip>45203</zip>
     <country>US</country>
   </address>
+  <sales/>
 </Store>
 <Store>
   <storeCode>69x420</storeCode>
@@ -117,12 +125,14 @@
     <emails>
       <string>JohnnyDrip@gman.com</string>
     </emails>
+    <sales/>
   </manager>
   <address>
     <street>944 Doe Crossing Drive</street>
     <city>Migrate</city>
-    <state>Kentucky</state>
+    <state>KY</state>
     <zip>41905</zip>
     <country>US</country>
   </address>
+  <sales/>
 </Store>

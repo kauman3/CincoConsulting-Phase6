@@ -70,13 +70,9 @@ public class SalesReport {
 	}
 	
 	public static void main(String[] args) {
-
-		String personsFile = "data/Persons.csv";
-		List<Person> persons = DataConverter.loadPersonData(personsFile);
-		String storesFile = "data/Stores.csv";
-		List<Store> stores = DataConverter.loadStoreData(storesFile, persons);
-		String itemsFile = "data/Items.csv";
-		List<Item> items = DataConverter.loadItemData(itemsFile);
+		List<Person> persons = DataConverter.loadPersonData();
+		List<Store> stores = DataConverter.loadStoreData(persons);
+		List<Item> items = DataConverter.loadItemData();
 		String salesFile = "data/Sales.csv";
 		List<Sale> sales = DataConverter.loadSaleData(salesFile, persons, stores, items);
 

@@ -3,13 +3,21 @@ package com.mgg;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-//import java.time.LocalDate;
-//import java.time.temporal.ChronoUnit;
-
 /**
- * TODO: add documentation and remove cruft
- * @author kylea
- *
+ * Subscriptions include online game service subscriptions, memberships, online game licenses, 
+ * or third-party services. Subscriptions have an annual fee. A purchased subscription has an 
+ * effective begin and effective end date to determine billing. The total cost of a subscription
+ * is the number of days included in the effective dates divided by 365 multiplied by the 
+ * annual fee. No tax is applied to subscriptions.
+ * 
+ * @author kauman<br \>
+ * Kyle Auman<br \>
+ * kauman3@huskers.unl.edu<br \>
+ * CSCE156<br \><br \>
+ * @author zmain<br \>
+ * Zach Main<br \>
+ * zmain2@huskers.unl.edu<br \>
+ * CSCE156
  */
 public class Subscription extends Item {
 
@@ -24,16 +32,10 @@ public class Subscription extends Item {
 		this.endDate = null;
 	}
 	
-	/**
-	 * @param beginDate the beginDate to set
-	 */
 	public void setBeginDate(LocalDate beginDate) {
 		this.beginDate = beginDate;
 	}
-
-	/**
-	 * @param endDate the endDate to set
-	 */
+	
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}

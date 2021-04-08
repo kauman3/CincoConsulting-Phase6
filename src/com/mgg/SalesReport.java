@@ -1,14 +1,25 @@
 package com.mgg;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+/**
+ * Contains methods to produce reports based on a list of {@link Sale}s.
+ * 
+ * @author kauman<br \>
+ * Kyle Auman<br \>
+ * kauman3@huskers.unl.edu<br \>
+ * CSCE156<br \><br \>
+ * @author zmain<br \>
+ * Zach Main<br \>
+ * zmain2@huskers.unl.edu<br \>
+ * CSCE156
+ */
 public class SalesReport {
 	
 	/**
-	 * TODO: use maps (3) for sales to person, sales to store, and items to sale
-	 * @param persons
+	 * Produces a summary report for each salesperson given a list of {@link Person}s 
+	 * and {@link Sale}s. Grand Total is the total after discounts and taxes.
+	 * @param stores
 	 * @param sales
 	 */
 	public static void salespersonReport(List<Person> persons, List<Sale> sales) {
@@ -36,6 +47,12 @@ public class SalesReport {
 		return;
 	}
 	
+	/**
+	 * Produces a summary report for each store location given a list of {@link Store}s 
+	 * and {@link Sale}s. Grand Total is the total after discounts and taxes.
+	 * @param stores
+	 * @param sales
+	 */
 	private static void storeSalesReport(List<Store> stores, List<Sale> sales) {
 		System.out.println("+----------------------------------------------------------------+\n"
 						 + "| Store Sales Summary Report                                     |\n"
@@ -61,7 +78,12 @@ public class SalesReport {
 		return;
 	}
 	
-	
+	/**
+	 * Produces a detailed sales report for every sale given a list of {@link Sale}s. The report 
+	 * includes the sale ID, store code, customer's and salesperson's address and emails, and a 
+	 * breakdown of the grand total.
+	 * @param sales
+	 */
 	public static void detailedSalesReport(List<Sale> sales) {
 		for(Sale s : sales) {
 			System.out.println(s);
@@ -70,14 +92,12 @@ public class SalesReport {
 	}
 	
 	public static void main(String[] args) {
-		List<Person> persons = DataConverter.loadPersonData();
-		List<Store> stores = DataConverter.loadStoreData(persons);
-		List<Item> items = DataConverter.loadItemData();
-		List<Sale> sales = DataConverter.loadSaleData(persons, stores, items);
-
-		salespersonReport(persons, sales);
-		storeSalesReport(stores, sales);
-		detailedSalesReport(sales);
+		salespersonReport(SQLConverter.persons, SQLConverter.sales);
+		storeSalesReport(SQLConverter.stores, SQLConverter.sales);
+		detailedSalesReport(SQLConverter.sales);
+//		salespersonReport(CSVConverter.persons, CSVConverter.sales);
+//		storeSalesReport(CSVConverter.stores, CSVConverter.sales);
+//		detailedSalesReport(CSVConverter.sales);
 	}
 	
 }

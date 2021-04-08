@@ -1,7 +1,9 @@
 package com.mgg;
 
 /**
- * This abstract class models an Item with a code and name.
+ * This abstract class models a sales items. All items fall under three main 
+ * categories: products, services, and subscriptions. All items are identified
+ * with a unique alphanumeric code and a name.
  * 
  * @author kauman<br \>
  * Kyle Auman<br \>

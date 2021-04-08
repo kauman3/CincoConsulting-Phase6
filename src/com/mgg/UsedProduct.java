@@ -1,5 +1,17 @@
 package com.mgg;
 
+/**
+ * All used items’ cost is 80% of the base price and all products have a 7.25% sales tax.
+ * 
+ * @author kauman<br \>
+ * Kyle Auman<br \>
+ * kauman3@huskers.unl.edu<br \>
+ * CSCE156<br \><br \>
+ * @author zmain<br \>
+ * Zach Main<br \>
+ * zmain2@huskers.unl.edu<br \>
+ * CSCE156
+ */
 public class UsedProduct extends Item {
 	
 	private final double basePrice;
@@ -11,16 +23,10 @@ public class UsedProduct extends Item {
 		this.quantity = 0;
 	}
 	
-	/**
-	 * @return the quantity
-	 */
 	public int getQuantity() {
 		return quantity;
 	}
 	
-	/**
-	 * @param quantity the quantity to set
-	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}

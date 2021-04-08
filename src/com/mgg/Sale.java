@@ -4,9 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO: add documentation
- * @author kylea
- *
+ * A sale is a collection of items purchased by a customer at a particular MGG store. Each
+ * sale includes: A unique alphanumeric code identifying the sale; The customer (and their
+ * info) that the sale has been made to; The store (and its info) that the sale was made at;
+ * A number of items made for that particular sale. Depending on the customer and items on 
+ * the sale, various fees and taxes are also applied. Taxes are applied to each sale item 
+ * independently (since they may have different rates). Any discount is applied to the 
+ * subtotal of all items after taxes. Every figure is rounded to the nearest cent.
+ * 
+ * @author kauman<br \>
+ * Kyle Auman<br \>
+ * kauman3@huskers.unl.edu<br \>
+ * CSCE156<br \><br \>
+ * @author zmain<br \>
+ * Zach Main<br \>
+ * zmain2@huskers.unl.edu<br \>
+ * CSCE156
  */
 public class Sale {
 		
@@ -31,30 +44,18 @@ public class Sale {
 		this.items.add(i);
 	}
 	
-	/**
-	 * @return the saleCode
-	 */
 	public String getSaleCode() {
 		return saleCode;
 	}
 	
-	/**
-	 * @return the store
-	 */
 	public Store getStore() {
 		return store;
 	}
 
-	/**
-	 * @return the salesperson
-	 */
 	public Person getSalesperson() {
 		return salesperson;
 	}
 	
-	/**
-	 * @return the items
-	 */
 	public List<Item> getItems() {
 		return items;
 	}

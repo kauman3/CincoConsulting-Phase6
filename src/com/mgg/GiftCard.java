@@ -1,5 +1,18 @@
 package com.mgg;
 
+/**
+ * Gift card prices are determined by how much a customer specifies 
+ * for a particular sale. All products have a 7.25% sales tax.
+ * 
+ * @author kauman<br \>
+ * Kyle Auman<br \>
+ * kauman3@huskers.unl.edu<br \>
+ * CSCE156<br \><br \>
+ * @author zmain<br \>
+ * Zach Main<br \>
+ * zmain2@huskers.unl.edu<br \>
+ * CSCE156
+ */
 public class GiftCard extends Item {
 	
 	private double amount;
@@ -14,9 +27,6 @@ public class GiftCard extends Item {
 		return this.amount;
 	}
 	
-	/**
-	 * @param amount the amount to set
-	 */
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}

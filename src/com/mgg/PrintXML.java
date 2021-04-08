@@ -8,8 +8,8 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 /**
- * This class takes lists of <code>Person</code>s, <code>Store</code>s, and <code>Item</code>s
- * and outputs the data they contain as an XML file. 
+ * Contains methods to take lists of {@link Person}, {@link Store}, and 
+ * {@link Item}, and output the data they contain as an XML file. 
  * 
  * @author kauman<br \>
  * Kyle Auman<br \>
@@ -30,7 +30,9 @@ public class PrintXML {
     	
     	XStream xstream = new XStream(new DomDriver());
     	xstream.alias("Salesperson", Salesperson.class);
-        xstream.alias("Customer", Customer.class);
+        xstream.alias("RegularCustomer", RegularCustomer.class);
+        xstream.alias("GoldCustomer", GoldCustomer.class);
+        xstream.alias("PlatinumCustomer", PlatinumCustomer.class);
         String xml = new String();
         
         for(Person p : persons) {
@@ -79,9 +81,9 @@ public class PrintXML {
     public static void itemsToXML(List<Item> items) {
     	
     	XStream xstream = new XStream(new DomDriver());
-    	xstream.alias("New Product", NewProduct.class);
-    	xstream.alias("Used Product", NewProduct.class);
-    	xstream.alias("Gift Card", GiftCard.class);
+    	xstream.alias("NewProduct", NewProduct.class);
+    	xstream.alias("UsedProduct", NewProduct.class);
+    	xstream.alias("GiftCard", GiftCard.class);
     	xstream.alias("Service", Service.class);
     	xstream.alias("Subscription", Subscription.class);
         String xml = new String();
@@ -99,5 +101,14 @@ public class PrintXML {
         }
         return;
     }
+    
+    public static void main(String[] args) {
+//    	personsToXML(CSVConverter.persons);
+//        storesToXML(CSVConverter.stores);
+//        itemsToXML(CSVConverter.items);
+        personsToXML(SQLConverter.persons);
+        storesToXML(SQLConverter.stores);
+        itemsToXML(SQLConverter.items);
+	}
     
 }

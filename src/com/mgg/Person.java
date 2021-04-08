@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * This abstract class models a Person with a personCode, firstName, lastName, 
- * address, and a list of email addresses.
+ * {@link Address}, and a list of email addresses.
  * 
  * @author kauman<br \>
  * Kyle Auman<br \>

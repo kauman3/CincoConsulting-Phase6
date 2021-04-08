@@ -1,5 +1,17 @@
 package com.mgg;
 
+/**
+ * All new items’ cost is the base price and all products have a 7.25% sales tax.
+ * 
+ * @author kauman<br \>
+ * Kyle Auman<br \>
+ * kauman3@huskers.unl.edu<br \>
+ * CSCE156<br \><br \>
+ * @author zmain<br \>
+ * Zach Main<br \>
+ * zmain2@huskers.unl.edu<br \>
+ * CSCE156
+ */
 public class NewProduct extends Item {
 	
 	private final double basePrice;
@@ -11,23 +23,14 @@ public class NewProduct extends Item {
 		this.quantity = 0;
 	}
 	
-	/**
-	 * @return the basePrice
-	 */
 	public double getBasePrice() {
 		return basePrice;
 	}
-
-	/**
-	 * @return the quantity
-	 */
+	
 	public int getQuantity() {
 		return quantity;
 	}
 	
-	/**
-	 * @param quantity the quantity to set
-	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}

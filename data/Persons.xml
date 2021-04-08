@@ -27,6 +27,7 @@
     <country>US</country>
   </address>
   <emails>
+    <string>nmichelotti1@sbwire.com</string>
     <string>nmichelotti1@vistaprint.com</string>
     <string>nmichelotti1@gravatar.com</string>
     <string>nmichelotti1@patch.com</string>
@@ -45,11 +46,12 @@
     <country>US</country>
   </address>
   <emails>
+    <string>wleavold2@npr.org</string>
     <string>wleavold2@craigslist.org</string>
   </emails>
   <sales/>
 </Salesperson>
-<com.mgg.PlatinumCustomer>
+<PlatinumCustomer>
   <personCode>beta4L</personCode>
   <firstName>Connor</firstName>
   <lastName>Zarya</lastName>
@@ -61,13 +63,14 @@
     <country>US</country>
   </address>
   <emails>
+    <string>zcullington3@engadget.com</string>
     <string>zcullington3@wisc.edu</string>
     <string>zcullington3@google.es</string>
     <string>zcullington3@google.pl</string>
   </emails>
   <sales/>
-</com.mgg.PlatinumCustomer>
-<com.mgg.PlatinumCustomer>
+</PlatinumCustomer>
+<PlatinumCustomer>
   <personCode>48b5dc</personCode>
   <firstName>Larry</firstName>
   <lastName>West</lastName>
@@ -79,12 +82,13 @@
     <country>US</country>
   </address>
   <emails>
+    <string>fleaming4@elpais.com</string>
     <string>fleaming4@unblog.fr</string>
     <string>fleaming4@hugedomains.com</string>
   </emails>
   <sales/>
-</com.mgg.PlatinumCustomer>
-<com.mgg.PlatinumCustomer>
+</PlatinumCustomer>
+<PlatinumCustomer>
   <personCode>abc123</personCode>
   <firstName>Stacy</firstName>
   <lastName>Summers</lastName>
@@ -96,12 +100,13 @@
     <country>US</country>
   </address>
   <emails>
+    <string>bstammers5@flickr.com</string>
     <string>bstammers5@mapy.cz</string>
     <string>bstammers5@cpanel.net</string>
   </emails>
   <sales/>
-</com.mgg.PlatinumCustomer>
-<com.mgg.GoldCustomer>
+</PlatinumCustomer>
+<GoldCustomer>
   <personCode>tre43r</personCode>
   <firstName>John</firstName>
   <lastName>Smith</lastName>
@@ -113,12 +118,13 @@
     <country>US</country>
   </address>
   <emails>
+    <string>guttley6@sogou.com</string>
     <string>guttley6@linkedin.com</string>
     <string>guttley6@latimes.com</string>
   </emails>
   <sales/>
-</com.mgg.GoldCustomer>
-<com.mgg.GoldCustomer>
+</GoldCustomer>
+<GoldCustomer>
   <personCode>4321d7</personCode>
   <firstName>James</firstName>
   <lastName>Fernando</lastName>
@@ -130,13 +136,14 @@
     <country>US</country>
   </address>
   <emails>
+    <string>fhalse7@europa.eu</string>
     <string>fhalse7@microsoft.com</string>
     <string>fhalse7@fc2.com</string>
     <string>fhalse7@moonfruit.com</string>
   </emails>
   <sales/>
-</com.mgg.GoldCustomer>
-<com.mgg.GoldCustomer>
+</GoldCustomer>
+<GoldCustomer>
   <personCode>f22d0b</personCode>
   <firstName>George</firstName>
   <lastName>Dennison</lastName>
@@ -148,12 +155,13 @@
     <country>US</country>
   </address>
   <emails>
+    <string>dwitherbed8@umich.edu</string>
     <string>dwitherbed8@pbs.org</string>
     <string>dwitherbed8@privacy.gov.au</string>
   </emails>
   <sales/>
-</com.mgg.GoldCustomer>
-<com.mgg.RegularCustomer>
+</GoldCustomer>
+<RegularCustomer>
   <personCode>d78da4</personCode>
   <firstName>Solomon</firstName>
   <lastName>Kellen</lastName>
@@ -165,13 +173,14 @@
     <country>US</country>
   </address>
   <emails>
+    <string>ksoloway9@amazon.co.uk</string>
     <string>ksoloway9@sitemeter.com</string>
     <string>ksoloway9@cmu.edu</string>
     <string>ksoloway9@unicef.org</string>
   </emails>
   <sales/>
-</com.mgg.RegularCustomer>
-<com.mgg.RegularCustomer>
+</RegularCustomer>
+<RegularCustomer>
   <personCode>87ttg5</personCode>
   <firstName>Mark</firstName>
   <lastName>Spice</lastName>
@@ -183,12 +192,29 @@
     <country>US</country>
   </address>
   <emails>
+    <string>rantoshina@cam.ac.uk</string>
     <string>rantoshina@amazonaws.com</string>
     <string>rantoshina@economist.com</string>
     <string>rantoshina@sfgate.com</string>
   </emails>
   <sales/>
-</com.mgg.RegularCustomer>
+</RegularCustomer>
+<RegularCustomer>
+  <personCode>89a8a1</personCode>
+  <firstName>Pepper</firstName>
+  <lastName>Portia</lastName>
+  <address>
+    <street>360 NoScope Plaza</street>
+    <city>Wichita</city>
+    <state>KS</state>
+    <zip>67230</zip>
+    <country>US</country>
+  </address>
+  <emails>
+    <string>pepperportia@lax.edu</string>
+  </emails>
+  <sales/>
+</RegularCustomer>
 <Salesperson>
   <personCode>aa887a</personCode>
   <firstName>John</firstName>
@@ -206,6 +232,22 @@
   <sales/>
 </Salesperson>
 <Salesperson>
+  <personCode>fdc227</personCode>
+  <firstName>Superman</firstName>
+  <lastName>Yerp</lastName>
+  <address>
+    <street>3984 Jeff Street</street>
+    <city>Phoenix</city>
+    <state>AZ</state>
+    <zip>85099</zip>
+    <country>US</country>
+  </address>
+  <emails>
+    <string>Yerpsuper@firefox.com</string>
+  </emails>
+  <sales/>
+</Salesperson>
+<Salesperson>
   <personCode>abc124</personCode>
   <firstName>Young</firstName>
   <lastName>Thug</lastName>
@@ -218,6 +260,22 @@
   </address>
   <emails>
     <string>SlimeyYSL@gmail.com</string>
+  </emails>
+  <sales/>
+</Salesperson>
+<Salesperson>
+  <personCode>fdc269</personCode>
+  <firstName>Gunna</firstName>
+  <lastName>Wunna</lastName>
+  <address>
+    <street>1234 Apple Street</street>
+    <city>Los Angeles</city>
+    <state>CA</state>
+    <zip>35815</zip>
+    <country>US</country>
+  </address>
+  <emails>
+    <string>YoungGunna@gmail.com</string>
   </emails>
   <sales/>
 </Salesperson>

@@ -1,9 +1,21 @@
 package com.mgg;
 
 /**
- * TODO: add documentation
- * @author kylea
- *
+ * Services are services that are performed by trained MGG staff and may include repair,
+ * clean up, in-home system setup, PC system builds, game training, etc. Each service
+ * is associated with a particular employee and are billed on a per-hour basis. When a
+ * purchase is made, a fixed number of hours is charged to the customer. Thus, the total
+ * cost of a service is the hourly rate multiplied by the number of hours. All services
+ * have a 2.85% service sales tax
+ * 
+ * @author kauman<br \>
+ * Kyle Auman<br \>
+ * kauman3@huskers.unl.edu<br \>
+ * CSCE156<br \><br \>
+ * @author zmain<br \>
+ * Zach Main<br \>
+ * zmain2@huskers.unl.edu<br \>
+ * CSCE156
  */
 public class Service extends Item {
 	
@@ -18,16 +30,10 @@ public class Service extends Item {
 		this.numHours = 0;
 	}
 	
-	/**
-	 * @param employee the employee to set
-	 */
 	public void setEmployee(Person employee) {
 		this.employee = employee;
 	}
-
-	/**
-	 * @param numHours the numHours to set
-	 */
+	
 	public void setNumHours(double numHours) {
 		this.numHours = numHours;
 	}

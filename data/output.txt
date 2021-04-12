@@ -1,35 +1,25 @@
+Salesperson                    # Sales    Grand Total
+Quinn, Jeffrey                 1          $   7804.02
+Micah, Michelle                3          $    360.62
+Yip, Levi                      1          $    261.64
+JohnnyDrip, John               1          $    146.69
+Yerp, Superman                 1          $     21.44
+Thug, Young                    0          $      0.00
+Wunna, Gunna                   0          $      0.00
+Keed, Little                   0          $      0.00
 +-----------------------------------------------------+
-| Salesperson Summary Report                          |
-+-----------------------------------------------------+
-Salesperson                      # Sales    Grand Total    
-Jeffrey, Quinn                   1          $      7,804.02
-Michelle, Micah                  3          $      360.62
-Levi, Yip                        0          $      0
-Superman, Yerp          	 1          $      21.44
-John, JohnnyDrip                 1          $      146.69
-Young, Thug                      0          $      0
-Gunna, Wunna                     0          $      0
-Little, Keed                     0          $      0
-
-        				
-+-----------------------------------------------------+				
-									
-									
-										  
-									     
-                                 6          $      8,332.77			   
-									   
-+----------------------------------------------------------------+	         
-| Store Sales Summary Report                                     |	     
-+----------------------------------------------------------------+               
-Store      Manager                         # Sales    Grand Total    
-12ed32     Quinn, Jeffrey                  1          $   7,804.02
-94pf32     John, JohnnyDrip                1          $   21.44
-7e45ds     John, JohnnyDrip                0          $   0.00
-92sf34     Quinn, Jeffrey                  0          $   0.00
-69x420     Quinn, Jeffrey                  4          $   507.32
+                               7          $   8594.41
 +----------------------------------------------------------------+
-                                           6          $   8,332.77
+| Store Sales Summary Report                                     |
++----------------------------------------------------------------+
+Store      Manager                        # Sales    Grand Total
+ed1234     Quinn, Jeffrey                 2          $   8065.65
+94pf32     JohnnyDrip, John               1          $     21.44
+73668b     Quinn, Jeffrey                 0          $      0.00
+96f2cf     Quinn, Jeffrey                 0          $      0.00
+69x420     JohnnyDrip, John               4          $    507.32
++----------------------------------------------------------------+
+                                          7          $   8594.41
 
 Sale  #Sale1xx
 Store #12ed32
@@ -45,7 +35,7 @@ Quinn, Jeffrey (sammmyyjius@gmail.com, swagggggggman@on.com)
 	601 Lotheville Road
 	Savannah GA 31405 US
 
-Item                                                               Total
+Item(s)                                                            Total
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-                          -=-=-=-=-=-
 GamerStation2000
    (New Product #8w9w90 @$3999.99/ea)                        $    7,999.98
@@ -69,7 +59,7 @@ Superman, Yerp (Yerpsuper@firefox.com)
 	69420 Nice Street
         Gainesville FL 32605 US
 
-Item                                                               Total
+Item(s)                                                            Total
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-                          -=-=-=-=-=-
 Fortnite V-Bucks
     (Giftcard #daad3p)				             $    19.99
@@ -92,7 +82,7 @@ John, JohnnyDrip (JohnnyDrip@gman.com)
 
 
 
-Item                                                               Total
+Item(s)                                                            Total
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-                          -=-=-=-=-=-
 Pokemon Arceus
     (Used Product #badd8t @$47.99/ea)		             $    143.98
@@ -113,7 +103,7 @@ Salesperson: Michelle, Micah (nmigjrkle@gmail.com, michal1@ewksljf.com, ndjkaslf
              132 Street Street
              Chicago OH 44177 US
 
-Item                                                               Total
+Item(s)                                                            Total
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-                          -=-=-=-=-=-
 Console Cleaning
     (Service #qu4k39 @$29.99/hr)		             $    164.95
@@ -133,7 +123,7 @@ Salesperson: Michelle, Micah (nmigjrkle@gmail.com, michal1@ewksljf.com, ndjkaslf
              132 Street Street
              Chicago OH 44177 US
 
-Item                                                               Total
+Item(s)                                                            Total
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-                          -=-=-=-=-=-
 Playstation Plus
     (Subscription #426dda(366 days) @$59.99/year)            $    60.15
@@ -154,7 +144,7 @@ Salesperson: Michelle, Micah (nmigjrkle@gmail.com, michal1@ewksljf.com, ndjkaslf
              132 Street Street
              Chicago OH 44177 US
 
-Item                                                               Total
+Item(s)                                                            Total
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-                          -=-=-=-=-=-
 Call of Duty Cold War
     (New Product #4fj3t9 @$69.99/ea)	            	     $    69.99
@@ -169,15 +159,26 @@ World of Warships
 				  	       Discount (5%) $   -8.09
                                                  Grand Total $    153.80
 ----------------------------------------------------------------------------
+Sale   #Sale19a
+Store  #ed1234
+Customer:
+Yip, Levi([wleavold2@npr.org, wleavold2@craigslist.org])
+        81 Northport Avenue
+        Mobile AL 36628 US
 
+Sales Person:
+Yip, Levi([wleavold2@npr.org, wleavold2@craigslist.org])
+        81 Northport Avenue
+        Mobile AL 36628 US
 
+Item(s)                                                            Total
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-                          -=-=-=-=-=-
+Amazon
+   (Gift Card #420blz)                                       $    287.00
 
+                                                    Subtotal $    287.00
+                                                         Tax $     20.81
+                                           Discount (15.00%) $     46.17
+                                                 Grand Total $    261.64
 
-
-
-
-
-
-
-
-
+----------------------------------------------------------------------------

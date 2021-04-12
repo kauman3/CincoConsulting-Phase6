@@ -36,13 +36,14 @@ public class SalesReport {
 						p.addSale(s);
 					}
 				}
-				System.out.printf("%-31s%-11d$%10.2f\n", p.getFullName(), p.getSales().size(), p.getSalespersonTotal());
+				System.out.printf("%-31s%-11d$%10.2f\n", p.getFullName(), 
+														 p.getSales().size(), 
+														 p.getSalespersonTotal());
 				grandTotal += p.getSalespersonTotal();
 				totalSales += p.getSales().size();
 			}
 		}
 		System.out.println("+-----------------------------------------------------+");
-		//TODO: see if theres a better way to format this
 		System.out.printf("%32d%-10s$%10.2f\n", totalSales, "", grandTotal);
 		return;
 	}
@@ -53,7 +54,7 @@ public class SalesReport {
 	 * @param stores
 	 * @param sales
 	 */
-	private static void storeSalesReport(List<Store> stores, List<Sale> sales) {
+	public static void storeSalesReport(List<Store> stores, List<Sale> sales) {
 		System.out.println("+----------------------------------------------------------------+\n"
 						 + "| Store Sales Summary Report                                     |\n"
 						 + "+----------------------------------------------------------------+\n"
@@ -69,9 +70,9 @@ public class SalesReport {
 			totalSales += s.getSales().size();
 			grandTotal += s.getStoreTotal();
 			System.out.printf("%-11s%-31s%-11d$%10.2f\n", s.getStoreCode(),
-												s.getManager().getFullName(), 
-												s.getSales().size(),
-												s.getStoreTotal());
+														  s.getManager().getFullName(), 
+														  s.getSales().size(),
+														  s.getStoreTotal());
 		}
 		System.out.println("+----------------------------------------------------------------+");
 		System.out.printf("%43d%-10s$%10.2f\n", totalSales, "", grandTotal);
@@ -92,12 +93,12 @@ public class SalesReport {
 	}
 	
 	public static void main(String[] args) {
-		salespersonReport(SQLConverter.persons, SQLConverter.sales);
-		storeSalesReport(SQLConverter.stores, SQLConverter.sales);
-		detailedSalesReport(SQLConverter.sales);
 //		salespersonReport(CSVConverter.persons, CSVConverter.sales);
 //		storeSalesReport(CSVConverter.stores, CSVConverter.sales);
 //		detailedSalesReport(CSVConverter.sales);
+		salespersonReport(SQLConverter.persons, SQLConverter.sales);
+		storeSalesReport(SQLConverter.stores, SQLConverter.sales);
+		detailedSalesReport(SQLConverter.sales);
 	}
 	
 }

@@ -29,61 +29,6 @@ public class SQLConverter {
 	public static List<Item> items = loadItemData();
 	public static List<Sale> sales = loadSaleData(persons, stores, items);
 	
-//	public static Address getAddress(String type, String id) {
-//		Connection conn = DatabaseInfo.openConnection();
-//		Address a = null;
-//		String query = "select"
-//					 + "	street,"
-//					 + "	city,"
-//					 + "    state,"
-//					 + "    zip,"
-//					 + "    isoCode as country"
-//					 + "    from Address a"
-//					 + "    join ?"	
-//					 + "    on a.addressId = ?"
-//					 + "    join State s"
-//					 + "    on a.stateId = s.stateId"
-//					 + "    join Country c"
-//					 + "    on a.countryId = c.countryId;";
-//		PreparedStatement ps = null;
-//		ResultSet rs = null;
-//		try {
-//			ps = conn.prepareStatement(query);
-//			if(type.contentEquals("person")) {
-//				//setting it with quotes join 'Person p' on a.addressId = 'p.addressId'
-//				ps.setString(1, "Person p");
-//				ps.setString(2, "p.addressId");
-//				rs = ps.executeQuery();
-//				while(rs.next()) {
-//					String street = rs.getString("street");
-//					String city = rs.getString("city");
-//					String state = rs.getString("state");
-//					int zip = rs.getInt("zip");
-//					String country = rs.getString("country");
-//					a = new Address(street, city, state, zip, country); 
-//				}
-//			} else {
-//				ps.setString(1, "Store s");
-//				ps.setString(2, "s.addressId");
-//				rs = ps.executeQuery();
-//				while(rs.next()) {
-//					String street = rs.getString("street");
-//					String city = rs.getString("city");
-//					String state = rs.getString("state");
-//					int zip = rs.getInt("zip");
-//					String country = rs.getString("country");
-//					a = new Address(street, city, state, zip, country); 
-//				}
-//			}
-//		}  catch (SQLException e) {
-//			System.out.println("SQLException: ");
-//			e.printStackTrace();
-//			throw new RuntimeException(e);
-//		}
-//		DatabaseInfo.closeConnection(conn, ps, rs);
-//		return a;
-//	}
-	
 	/**
 	 * Queries the database, accesses the Email table, and returns
 	 * the List of emails for a specific person.
@@ -109,7 +54,7 @@ public class SQLConverter {
 			while(rs.next()) {
 				emails.add(rs.getString("email"));
 			}
-		}  catch (SQLException e) {
+		} catch (SQLException e) {
 			System.out.println("SQLException: ");
 			e.printStackTrace();
 			throw new RuntimeException(e);

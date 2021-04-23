@@ -26,7 +26,7 @@ public class NewProduct extends Item {
 	public double getBasePrice() {
 		return basePrice;
 	}
-	
+
 	public int getQuantity() {
 		return quantity;
 	}
@@ -37,7 +37,7 @@ public class NewProduct extends Item {
 	
 	@Override
 	public double getCost() {
-		return this.basePrice * this.quantity;
+		return Math.round(this.basePrice * this.quantity * 100.0) / 100.0;
 	}
 
 	@Override

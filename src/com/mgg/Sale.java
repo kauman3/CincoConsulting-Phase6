@@ -85,7 +85,7 @@ public class Sale {
 	}
 	
 	public double getDiscount() {
-		return (this.getSubtotal() + this.getTotalTax()) * this.customer.getDiscountRate();
+		return Math.round((this.getSubtotal() + this.getTotalTax()) * this.customer.getDiscountRate() * 100.0) / 100.0;
 	}
 	
 	public double getGrandTotal() {
@@ -94,27 +94,29 @@ public class Sale {
 	
 	public String toString() {
 		String str = String.format("Sale   #%s\n"
-								 + "Store  #%s\n"
-								 + "Customer:\n%s\n"
-								 + "Sales Person:\n%s\n"
-								 + "Item(s)%67s\n"
-								 + "%s%45s\n"
-								 + "%s\n"
-								 + "%70s%10.2f\n"
-								 + "%70s%10.2f\n"
-								 + "%62s%.2f%s%10.2f\n"
-								 + "%70s%10.2f\n", this.getSaleCode(), 
-												   this.store.getStoreCode(),
-												   this.customer.toSting(),
-												   this.salesperson.toSting(),
-												   "Total", 
-												   "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-", 
-												   "-=-=-=-=-=-",
-												   this.itemsToString(),
-												   "Subtotal $", this.getSubtotal(), 
-												   "Tax $", this.getTotalTax(), 
-												   "Discount (", this.customer.getDiscountRate() * 100, "%) $", this.getDiscount(),
-												   "Grand Total $", this.getGrandTotal());
+				 + "Store  #%s\n"
+				 + "Customer:\n%s\n"
+				 + "Sales Person:\n%s\n"
+				 + "Item(s)%67s\n"
+				 + "%s%45s\n"
+				 + "%s\n"
+				 + "%80s\n"
+				 + "%70s%10.2f\n"
+				 + "%70s%10.2f\n"
+				 + "%62s%.2f%s%10.2f\n"
+				 + "%70s%10.2f\n", this.getSaleCode(), 
+								   this.store.getStoreCode(),
+								   this.customer.toSting(),
+								   this.salesperson.toSting(),
+								   "Total", 
+								   "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-", 
+								   "-=-=-=-=-=-",
+								   this.itemsToString(),
+								   "-=-=-=-=-=-",
+								   "Subtotal $", this.getSubtotal(), 
+								   "Tax $", this.getTotalTax(), 
+								   "Discount (", this.customer.getDiscountRate() * 100, "%) $", this.getDiscount(),
+								   "Grand Total $", this.getGrandTotal());
 		return str;
 	}
 

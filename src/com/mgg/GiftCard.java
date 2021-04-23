@@ -24,7 +24,7 @@ public class GiftCard extends Item {
 
 	@Override
 	public double getCost() {
-		return this.amount;
+		return Math.round(this.amount * 100.0) / 100.0;
 	}
 	
 	public void setAmount(double amount) {

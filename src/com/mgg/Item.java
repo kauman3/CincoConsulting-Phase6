@@ -38,7 +38,7 @@ public abstract class Item {
 	public abstract double getTaxRate();
 
 	public double getTax() {
-		return this.getCost() * this.getTaxRate();
+		return Math.round(this.getCost() * this.getTaxRate() * 100.0) / 100.0;
 	}
 
 	public double getTotalCost() {

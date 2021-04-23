@@ -31,11 +31,15 @@ public class Subscription extends Item {
 		this.beginDate = null;
 		this.endDate = null;
 	}
-	
+
+	public double getAnnualFee() {
+		return annualFee;
+	}
+
 	public void setBeginDate(LocalDate beginDate) {
 		this.beginDate = beginDate;
 	}
-	
+
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
@@ -46,7 +50,7 @@ public class Subscription extends Item {
 
 	@Override
 	public double getCost() {
-		return this.getDays() / 365.0 * this.annualFee;
+		return Math.round(this.getDays() / 365.0 * this.annualFee * 100.0) / 100.0;
 	}
 
 	@Override
@@ -55,10 +59,11 @@ public class Subscription extends Item {
 	}
 	
 	public String toString() {
-		String str = String.format("%s\n   (Subscription #%s %d days @$%.2f/yr)%30.2f\n", this.name, 
+		String str = String.format("%s\n   (Subscription #%s %d days @$%.2f/yr)%25s%10.2f\n", this.name, 
 																						  this.itemCode, 
 																						  (int) this.getDays(),
-																						  this.annualFee, 
+																						  this.annualFee,
+																						  "$",
 																						  this.getCost());
 		return str;
 	}

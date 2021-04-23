@@ -30,17 +30,21 @@ public class Service extends Item {
 		this.numHours = 0;
 	}
 	
+	public double getHourlyRate() {
+		return hourlyRate;
+	}
+
 	public void setEmployee(Person employee) {
 		this.employee = employee;
 	}
-	
+
 	public void setNumHours(double numHours) {
 		this.numHours = numHours;
 	}
 
 	@Override
 	public double getCost() {
-		return this.hourlyRate * this.numHours;
+		return Math.round(this.hourlyRate * this.numHours * 100.0) / 100.0;
 	}
 
 	@Override
@@ -49,11 +53,12 @@ public class Service extends Item {
 	}
 	
 	public String toString() {
-		String str = String.format("%s\n   (Service #%s by %s for %.1f hours @$%.2f/hr)%10.2f\n", this.name,
+		String str = String.format("%s\n   (Service #%s by %s for %.1f hours @$%.2f/hr)%6s%10.2f\n", this.name,
 				   															 				   	  this.itemCode,
 				   															 				   	  this.employee.getFullName(),
 				   															 				   	  this.numHours,
 				   															 				   	  this.hourlyRate,
+				   															 				   	  "$",
 				   															 				   	  this.getCost());
 		return str;
 	}

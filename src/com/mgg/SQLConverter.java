@@ -198,9 +198,7 @@ public class SQLConverter {
 					 + "	itemCode,"
 					 + "    itemType,"
 					 + "    itemName,"
-					 + "    basePrice,"
-					 + "    hourlyRate,"
-					 + "    annualFee"
+					 + "    basePrice"
 					 + "    from Item;";
 		List<Item> items = new ArrayList<>();
 		PreparedStatement ps = null;
@@ -212,17 +210,14 @@ public class SQLConverter {
 				String itemCode = rs.getString("itemCode");
 				String itemType = rs.getString("itemType");
 				String itemName = rs.getString("itemName");
+				double basePrice = rs.getDouble("basePrice");
 				if(itemType.equals("SV")) {
-					double hourlyRate = rs.getDouble("hourlyRate");
-	            	items.add(new Service(itemCode, itemName, hourlyRate));
+	            	items.add(new Service(itemCode, itemName, basePrice));
 	            } else if(itemType.equals("SB")) {
-					double annualFee = rs.getDouble("annualFee");
-	            	items.add(new Subscription(itemCode, itemName, annualFee));
+	            	items.add(new Subscription(itemCode, itemName, basePrice));
 	            } else if(itemType.equals("PN")) {
-					double basePrice = rs.getDouble("basePrice");
 	            	items.add(new NewProduct(itemCode, itemName, basePrice));
 	            } else if(itemType.equals("PU")) {
-					double basePrice = rs.getDouble("basePrice");
 	            	items.add(new UsedProduct(itemCode, itemName, basePrice));
 	            } else {
 	            	items.add(new GiftCard(itemCode, itemName));
@@ -315,7 +310,6 @@ public class SQLConverter {
 				for(Item i : items) {
 	        		if(itemCode.equals(i.getItemCode())) {
 	        			if(i instanceof Service) {
-	        				//make a get person function
 	        				int employeeId = rs.getInt("employeeId");
 	        				Person p = getPerson(employeeId, persons);
 	        				((Service) i).setEmployee(p);

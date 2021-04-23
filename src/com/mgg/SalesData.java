@@ -17,15 +17,16 @@ public class SalesData {
 	 * Removes all sales records from the database.
 	 */
 	public static void removeAllSales() {
-		//get the total number of sales, then make a for look the runs a query that removes all saleIds up to that number
 		Connection conn = DatabaseInfo.openConnection();
-        String query = "drop table if exists SaleItem, "
-        								  + "Sale;";
+        String saleItemQuery = "delete from SaleItem where saleItemId;";
+        String saleQuery = "delete from Sale where saleId;";
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            ps = conn.prepareStatement(query);
-            ps.executeQuery(); 
+            ps = conn.prepareStatement(saleItemQuery);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(saleQuery);
+            ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("SQLException: ");
             e.printStackTrace();
@@ -55,13 +56,13 @@ public class SalesData {
             	String deleteSaleItemQuerie = "delete from SaleItem where saleId = ?;";
             	ps.getConnection().prepareStatement(deleteSaleItemQuerie);
             	ps.setInt(1, saleId);
-            	ps.executeQuery();
+            	ps.executeUpdate();
             	String deleteSaleQuerie = "delete from Sale where saleCode like ?;";
             	ps.getConnection().prepareStatement(deleteSaleQuerie);
             	ps.setString(1, saleCode);
-            	ps.executeQuery();
+            	ps.executeUpdate();
             } else {
-            	throw new IllegalStateException("Sale #" + saleCode + " does not exist in the database");
+            	throw new IllegalArgumentException("A sale with saleCode '" + saleCode + "' does not exist.");
             }
         } catch (SQLException e) {
             System.out.println("SQLException: ");
@@ -75,28 +76,43 @@ public class SalesData {
 	 * Clears all tables of the database of all records.
 	 */
 	public static void clearDatabase() {
-		//use delete from (SaleItem)
 		Connection conn = DatabaseInfo.openConnection();
-		String query = "drop table if exists SaleItem, "
-										  + "Item, "
-										  + "Sale, "
-										  + "Store, "
-										  + "Email, "
-										  + "Person, "
-										  + "Address, "
-										  + "State, "
-										  + "Country;";
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		try {
-			ps = conn.prepareStatement(query);
-			ps.executeQuery();
-		} catch (SQLException e) {
-			System.out.println("SQLException: ");
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-		DatabaseInfo.closeConnection(conn, ps, rs);
+        String saleItemQuery = "delete from SaleItem where saleItemId;";
+        String saleQuery = "delete from Sale where saleId;";
+        String itemQuery = "delete from Item where itemId;";
+        String storeQuery = "delete from Store where storeId;";
+        String emailQuery = "delete from Email where emailId;";
+        String personQuery = "delete from Person where personId;";
+        String addressQuery = "delete from Address where addressId;";
+        String stateQuery = "delete from State where stateId;";
+        String countryQuery = "delete from Country where countryId;";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(saleItemQuery);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(saleQuery);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(itemQuery);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(storeQuery);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(emailQuery);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(personQuery);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(addressQuery);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(stateQuery);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(countryQuery);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("SQLException: ");
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        DatabaseInfo.closeConnection(conn, ps, rs);
 	}
 	
 	/**
@@ -383,8 +399,13 @@ public class SalesData {
 	 * @param name
 	 * @param basePrice
 	 */
-	@SuppressWarnings("resource")
 	public static void addItem(String itemCode, String type, String name, Double basePrice) {
+		if(basePrice == null) {
+			basePrice = 0.0;
+		}
+		if(itemCode == null || itemCode.isEmpty() || type == null || type.isEmpty() || name == null || name.isEmpty()) {
+			throw new IllegalArgumentException("You have given an invalid input (either null or empty)");
+		}
 		Connection conn = DatabaseInfo.openConnection();
 		String query = "select itemId from Item where itemCode like ?";
 		PreparedStatement ps = null;
@@ -394,15 +415,16 @@ public class SalesData {
 			ps.setString(1, itemCode);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				throw new IllegalStateException("An item with item code '" + itemCode + "' already exists");
+				throw new IllegalArgumentException("An item with item code '" + itemCode + "' already exists");
 			} else {
 				if(type.contentEquals("PN") || type.contentEquals("PU") || type.contentEquals("PG") || type.contentEquals("SV") || type.contentEquals("SB")) {
-					String itemQuery = "insert into Item(itemCode,itemType,itemName,basePrice,hourlyRate,annualFee) VALUES (?,?,?,?,NULL,NULL);";
+					String itemQuery = "insert into Item(itemCode,itemType,itemName,basePrice) VALUES (?,?,?,?);";
 					ps = conn.prepareStatement(itemQuery);
 					ps.setString(1, itemCode);
 					ps.setString(2, type);
 					ps.setString(3, name);
 					ps.setDouble(4, basePrice);
+					ps.executeUpdate();
 				} else {
 					throw new IllegalArgumentException("Type '" + type + "' is an invalid item type");
 				}
@@ -490,7 +512,41 @@ public class SalesData {
 	 * @param quantity
 	 */
 	public static void addProductToSale(String saleCode, String itemCode, int quantity) {
-		
+		Connection conn = DatabaseInfo.openConnection();
+		String query = "select saleId from Sale where saleCode like ?;";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setString(1, saleCode);
+			rs = ps.executeQuery();
+			int saleId = -1;
+			if(rs.next()) {
+				saleId = rs.getInt("saleId");
+			} else {
+				throw new IllegalArgumentException("A sale with saleCode '" + saleCode + "' does not exist.");
+			}
+			String itemQuery = "select itemId from Item where itemCode like ?";
+			ps = conn.prepareStatement(itemQuery);
+			ps.setString(1, itemCode);
+			rs = ps.executeQuery();
+			int itemId = -1;
+			if(rs.next()) {
+				itemId = rs.getInt("itemId");
+			} else {
+				throw new IllegalArgumentException("An item with itemCode '" + itemCode + "' does not exist.");
+			}
+			String productQuery = "insert into SaleItem(saleId,itemId,quantity,amount,employeeId,numHours,beginDate,endDate) values (?,?,?,NULL,NULL,NULL,NULL,NULL);";
+			ps = conn.prepareStatement(productQuery);
+			ps.setInt(1, saleId);
+			ps.setInt(2, itemId);
+			ps.setInt(3, quantity);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**
@@ -503,7 +559,41 @@ public class SalesData {
 	 * @param amount
 	 */
 	public static void addGiftCardToSale(String saleCode, String itemCode, double amount) {
-		
+		Connection conn = DatabaseInfo.openConnection();
+		String query = "select saleId from Sale where saleCode like ?;";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setString(1, saleCode);
+			rs = ps.executeQuery();
+			int saleId = -1;
+			if(rs.next()) {
+				saleId = rs.getInt("saleId");
+			} else {
+				throw new IllegalArgumentException("A sale with saleCode '" + saleCode + "' does not exist.");
+			}
+			String itemQuery = "select itemId from Item where itemCode like ?";
+			ps = conn.prepareStatement(itemQuery);
+			ps.setString(1, itemCode);
+			rs = ps.executeQuery();
+			int itemId = -1;
+			if(rs.next()) {
+				itemId = rs.getInt("itemId");
+			} else {
+				throw new IllegalArgumentException("An item with itemCode '" + itemCode + "' does not exist.");
+			}
+			String giftCardQuery = "insert into SaleItem(saleId,itemId,quantity,amount,employeeId,numHours,beginDate,endDate) values (?,?,NULL,?,NULL,NULL,NULL,NULL);";
+			ps = conn.prepareStatement(giftCardQuery);
+			ps.setInt(1, saleId);
+			ps.setInt(2, itemId);
+			ps.setDouble(3, amount);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**
@@ -518,7 +608,52 @@ public class SalesData {
 	 * @param billedHours
 	 */
 	public static void addServiceToSale(String saleCode, String itemCode, String employeeCode, double billedHours) {
-		
+		Connection conn = DatabaseInfo.openConnection();
+		String query = "select saleId from Sale where saleCode like ?;";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setString(1, saleCode);
+			rs = ps.executeQuery();
+			int saleId = -1;
+			if(rs.next()) {
+				saleId = rs.getInt("saleId");
+			} else {
+				throw new IllegalArgumentException("A sale with saleCode '" + saleCode + "' does not exist.");
+			}
+			String itemQuery = "select itemId from Item where itemCode like ?";
+			ps = conn.prepareStatement(itemQuery);
+			ps.setString(1, itemCode);
+			rs = ps.executeQuery();
+			int itemId = -1;
+			if(rs.next()) {
+				itemId = rs.getInt("itemId");
+			} else {
+				throw new IllegalArgumentException("An item with itemCode '" + itemCode + "' does not exist.");
+			}
+			String employeeQuery = "select personId from Item where personCode like ?";
+			ps = conn.prepareStatement(employeeQuery);
+			ps.setString(1, employeeCode);
+			rs = ps.executeQuery();
+			int employeeId = -1;
+			if(rs.next()) {
+				employeeId = rs.getInt("personId");
+			} else {
+				throw new IllegalArgumentException("An employee with personCode '" + employeeCode + "' does not exist.");
+			}
+			String serviceQuery = "insert into SaleItem(saleId,itemId,quantity,amount,employeeId,numHours,beginDate,endDate) values (?,?,NULL,NULL,?,?,NULL,NULL);";
+			ps = conn.prepareStatement(serviceQuery);
+			ps.setInt(1, saleId);
+			ps.setInt(2, itemId);
+			ps.setInt(3, employeeId);
+			ps.setDouble(4, billedHours);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**
@@ -533,7 +668,42 @@ public class SalesData {
 	 * @param endDate
 	 */
 	public static void addSubscriptionToSale(String saleCode, String itemCode, String startDate, String endDate) {
-		
+		Connection conn = DatabaseInfo.openConnection();
+		String query = "select saleId from Sale where saleCode like ?;";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setString(1, saleCode);
+			rs = ps.executeQuery();
+			int saleId = -1;
+			if(rs.next()) {
+				saleId = rs.getInt("saleId");
+			} else {
+				throw new IllegalArgumentException("A sale with saleCode '" + saleCode + "' does not exist.");
+			}
+			String itemQuery = "select itemId from Item where itemCode like ?";
+			ps = conn.prepareStatement(itemQuery);
+			ps.setString(1, itemCode);
+			rs = ps.executeQuery();
+			int itemId = -1;
+			if(rs.next()) {
+				itemId = rs.getInt("itemId");
+			} else {
+				throw new IllegalArgumentException("An item with itemCode '" + itemCode + "' does not exist.");
+			}
+			String subscriptionQuery = "insert into SaleItem(saleId,itemId,quantity,amount,employeeId,numHours,beginDate,endDate) values (?,?,NULL,NULL,NULL,NULL,?,?);";
+			ps = conn.prepareStatement(subscriptionQuery);
+			ps.setInt(1, saleId);
+			ps.setInt(2, itemId);
+			ps.setString(3, startDate);
+			ps.setString(4, endDate);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 	
 	public static void main(String args[]) {

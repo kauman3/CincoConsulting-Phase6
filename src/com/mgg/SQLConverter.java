@@ -220,7 +220,7 @@ public class SQLConverter {
 	            } else if(itemType.equals("PU")) {
 	            	items.add(new UsedProduct(itemCode, itemName, basePrice));
 	            } else {
-	            	items.add(new GiftCard(itemCode, itemName));
+	            	items.add(new GiftCard(itemCode, itemName, basePrice));
 	            }
 			}
 	    } catch (SQLException e) {
@@ -296,7 +296,7 @@ public class SQLConverter {
 					 + "    from SaleItem si"
 					 + "    join Sale s"
 					 + "    on si.saleId = s.saleId"
-					 + "    join Item i\r\n"
+					 + "    join Item i"
 					 + "    on si.itemId = i.itemId"
 					 + "    where saleCode = ?;";
 		PreparedStatement ps = null;
@@ -310,27 +310,28 @@ public class SQLConverter {
 				for(Item i : items) {
 	        		if(itemCode.equals(i.getItemCode())) {
 	        			if(i instanceof Service) {
-	        				int employeeId = rs.getInt("employeeId");
-	        				Person p = getPerson(employeeId, persons);
-	        				((Service) i).setEmployee(p);
-	        				double numHours = rs.getDouble("numHours");
-	        				((Service) i).setNumHours(numHours);
+	        				Service sv = new Service(i.getItemCode(), i.getName(), ((Service) i).getHourlyRate());
+	        				Person p = getPerson(rs.getInt("employeeId"), persons);
+	        				sv.setEmployee(p);
+	        				sv.setNumHours(rs.getDouble("numHours"));
+	        				sale.addItem(sv);
 	        			} else if(i instanceof Subscription) {
-	        				String beginDate = rs.getString("beginDate");
-	        				String endDate = rs.getString("endDate");
-	        				((Subscription) i).setBeginDate(LocalDate.parse(beginDate));
-	        				((Subscription) i).setEndDate(LocalDate.parse(endDate));
+	        				Subscription sb = new Subscription(i.getItemCode(), i.getName(), ((Subscription) i).getAnnualFee());
+	        				sb.setBeginDate(LocalDate.parse(rs.getString("beginDate")));
+	        				sb.setEndDate(LocalDate.parse(rs.getString("endDate")));
+	        				sale.addItem(sb);
 	        			} else if(i instanceof NewProduct) {
-	        				int quantity = rs.getInt("quantity");
-	        				((NewProduct) i).setQuantity(quantity);
+	        				NewProduct np = new NewProduct(i.getItemCode(), i.getName(), ((NewProduct) i).getBasePrice());
+	        				np.setQuantity(rs.getInt("quantity"));
+	        				sale.addItem(np);
 	        			} else if(i instanceof UsedProduct) {
-	        				int quantity = rs.getInt("quantity");
-	        				((UsedProduct) i).setQuantity(quantity);
-	        			} else {
-	        				double amount = rs.getDouble("amount");
-	        				((GiftCard) i).setAmount(amount);
+	        				UsedProduct up = new UsedProduct(i.getItemCode(), i.getName(), Math.round(((UsedProduct) i).getBasePrice() * 0.8 * 100.0) / 100.0);
+	        				up.setQuantity(rs.getInt("quantity"));
+	        				sale.addItem(up);
+	        			} else if(i instanceof GiftCard) {
+	        				GiftCard gc = new GiftCard(i.getItemCode(), i.getName(), rs.getDouble("amount"));
+	        				sale.addItem(gc);
 	        			}
-	        			sale.addItem(i);
 	        		}
 	        	}
 			}

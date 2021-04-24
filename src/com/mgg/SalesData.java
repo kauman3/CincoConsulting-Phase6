@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Database interface class
@@ -42,7 +40,7 @@ public class SalesData {
 	 * @param saleCode
 	 */
 	public static void removeSale(String saleCode) {
-		if (saleCode == null) {
+		if (saleCode == null || saleCode.isEmpty()) {
 			throw new IllegalArgumentException("Error: invalid input");
 		}
 		Connection conn = DatabaseInfo.openConnection();
@@ -119,12 +117,12 @@ public class SalesData {
 	}
 	
 	/**
-	 * TODO: add documentation
+	 * Adds the given state to the state table and returns the stateId
 	 * @param state
 	 * @return
 	 */
 	public static int addState(String state) {
-		if (state == null) {
+		if (state == null || state.isEmpty()) {
 			throw new IllegalArgumentException("Error: invalid input");
 		}
 		Connection conn = DatabaseInfo.openConnection();
@@ -158,12 +156,12 @@ public class SalesData {
 	}
 	
 	/**
-	 * TODO: add documentation
+	 * Adds the given country to the country table and returns the countryId
 	 * @param country
 	 * @return
 	 */
 	public static int addCountry(String country) {
-		if (country == null) {
+		if (country == null || country.isEmpty()) {
 			throw new IllegalArgumentException("Error: invalid input");
 		}
 		Connection conn = DatabaseInfo.openConnection();
@@ -197,7 +195,7 @@ public class SalesData {
 	}
 	
 	/**
-	 * TODO: add documentation
+	 * Adds the given address to the address table and returns the addressId
 	 * @param street
 	 * @param city
 	 * @param state
@@ -210,7 +208,16 @@ public class SalesData {
 			 					  String state, 
 			 					  String zip, 
 			 					  String country) {
-		if (street == null || city == null || state == null || zip == null || country == null) {
+		if (street == null ||
+			street.isEmpty() ||
+			city == null ||
+			city.isEmpty() ||
+			state == null ||
+			state.isEmpty() ||
+			zip == null ||
+			zip.isEmpty() ||
+			country == null ||
+			country.isEmpty()) {
 			throw new IllegalArgumentException("Error: invalid input");
 		}
 		Connection conn = DatabaseInfo.openConnection();
@@ -271,7 +278,24 @@ public class SalesData {
 								 String state, 
 								 String zip, 
 								 String country) {
-		if (street == null || city == null || state == null || zip == null || country == null || personCode == null || type == null || firstName == null || lastName == null) {
+		if (personCode == null ||
+			personCode.isEmpty() ||
+			type == null || 
+			type.isEmpty() ||
+			firstName == null || 
+			firstName.isEmpty() ||
+			lastName == null || 
+			lastName.isEmpty() ||
+			street == null || 
+			street.isEmpty() ||
+			city == null || 
+			city.isEmpty() ||
+			state == null || 
+			state.isEmpty() ||
+			zip == null || 
+			zip.isEmpty() ||
+			country == null ||
+			country.isEmpty()) {
 			throw new IllegalArgumentException("Error: invalid input");
 		}
 		Connection conn = DatabaseInfo.openConnection();
@@ -305,13 +329,12 @@ public class SalesData {
 	/**
 	 * Adds an email record corresponding person record corresponding to the
 	 * provided <code>personCode</code>
-	 * TODO: fix last else
 	 * 
 	 * @param personCode
 	 * @param email
 	 */
 	public static void addEmail(String personCode, String email) {
-		if (personCode == null || email == null) {
+		if (personCode == null || personCode.isEmpty() || email == null || email.isEmpty()) {
 			throw new IllegalArgumentException("Error: invalid input");
 		}
 		Connection conn = DatabaseInfo.openConnection();
@@ -369,7 +392,20 @@ public class SalesData {
 								String state, 
 								String zip, 
 								String country) {
-		if (storeCode == null || managerCode == null || street == null || city == null || state == null || zip == null || country == null) {
+		if (storeCode == null || 
+			storeCode.isEmpty() || 
+			managerCode == null || 
+			managerCode.isEmpty() ||
+			street == null || 
+			street.isEmpty() ||
+			city == null || 
+			city.isEmpty() ||
+			state == null || 
+			state.isEmpty() ||
+			zip == null || 
+			zip.isEmpty() ||
+			country == null ||
+			country.isEmpty()) {
 			throw new IllegalArgumentException("Error: invalid input");
 		}
 		
@@ -468,7 +504,14 @@ public class SalesData {
 	 * @param salesPersonCode
 	 */
 	public static void addSale(String saleCode, String storeCode, String customerCode, String salesPersonCode) {
-		if (saleCode == null || storeCode == null || customerCode == null || salesPersonCode == null) {
+		if (saleCode == null || 
+			saleCode.isEmpty() || 
+			storeCode == null || 
+			storeCode.isEmpty() ||
+			customerCode == null || 
+			customerCode.isEmpty() ||
+			salesPersonCode == null ||
+			salesPersonCode.isEmpty()) {
 			throw new IllegalArgumentException("Error: invalid input");
 		}
 		Connection conn = DatabaseInfo.openConnection();
@@ -537,7 +580,7 @@ public class SalesData {
 	 * @param quantity
 	 */
 	public static void addProductToSale(String saleCode, String itemCode, int quantity) {
-		if (saleCode == null || itemCode == null) {
+		if (saleCode == null || saleCode.isEmpty() || itemCode == null || itemCode.isEmpty()) {
 			throw new IllegalArgumentException("Error: invalid input");
 		}
 		Connection conn = DatabaseInfo.openConnection();
@@ -587,7 +630,7 @@ public class SalesData {
 	 * @param amount
 	 */
 	public static void addGiftCardToSale(String saleCode, String itemCode, double amount) {
-		if (saleCode == null || itemCode == null) {
+		if (saleCode == null || saleCode.isEmpty() || itemCode == null || itemCode.isEmpty() || amount == 0) {
 			throw new IllegalArgumentException("Error: invalid input");
 		}
 		Connection conn = DatabaseInfo.openConnection();
@@ -639,7 +682,12 @@ public class SalesData {
 	 * @param billedHours
 	 */
 	public static void addServiceToSale(String saleCode, String itemCode, String employeeCode, double billedHours) {
-		if (saleCode == null || itemCode == null || employeeCode == null) {
+		if (saleCode == null || 
+			saleCode.isEmpty() || 
+			itemCode == null || 
+			itemCode.isEmpty() || 
+			employeeCode == null|| 
+			employeeCode.isEmpty()) {
 			throw new IllegalArgumentException("Error: invalid input");
 		}
 		Connection conn = DatabaseInfo.openConnection();
@@ -676,7 +724,14 @@ public class SalesData {
 			} else {
 				throw new IllegalArgumentException("An employee with personCode '" + employeeCode + "' does not exist.");
 			}
-			String serviceQuery = "insert into SaleItem(saleId,itemId,quantity,amount,employeeId,numHours,beginDate,endDate) values (?,?,NULL,NULL,?,?,NULL,NULL);";
+			String serviceQuery = "insert into SaleItem(saleId,"
+													 + "itemId,"
+													 + "quantity,"
+													 + "amount,"
+													 + "employeeId,"
+													 + "numHours,"
+													 + "beginDate,"
+													 + "endDate) values (?,?,NULL,NULL,?,?,NULL,NULL);";
 			ps = conn.prepareStatement(serviceQuery);
 			ps.setInt(1, saleId);
 			ps.setInt(2, itemId);
@@ -702,7 +757,14 @@ public class SalesData {
 	 * @param endDate
 	 */
 	public static void addSubscriptionToSale(String saleCode, String itemCode, String startDate, String endDate) {
-		if (saleCode == null || itemCode == null || startDate == null || endDate == null) {
+		if (saleCode == null ||
+			saleCode.isEmpty() ||
+			itemCode == null || 
+			itemCode.isEmpty() ||
+			startDate == null || 
+			startDate.isEmpty() ||
+			endDate == null ||
+			endDate.isEmpty()) {
 			throw new IllegalArgumentException("Error: invalid input");
 		}
 		Connection conn = DatabaseInfo.openConnection();
@@ -741,24 +803,6 @@ public class SalesData {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
-	}
-	
-	public static void main(String args[]) {
-		System.out.println(addCountry("US"));
-		System.out.println(addCountry("US"));
-		System.out.println(addState("NE"));
-		System.out.println(addState("AK"));
-		System.out.println(addState("NY"));
-		System.out.println(addState("CA"));
-		System.out.println(addAddress("0 Havey Avenue","Cleveland","OH","44177","1"));
-		System.out.println(addAddress("18913 Chandler St","Omaha","NE","68136","1"));
-		System.out.println(addAddress("18912 Chandler St","Omaha","NE","68136","1"));
-		removeSale("Sae321x");
-//		addItem("8w9w9", "SB", "GamerStation2000", 3999.99);
-//		addStore("ed123", "aa887a", "0 Havey Avenue","Cleveland","OH","44177","US");
-//		addEmail("ttg420", "squarry0@reverbnation.c");
-//		addPerson("ttg40","E","Quinn","Jeffrey","0 Havey Avenue","Cleveland","OH","44177","US");
-//		addSale("Sale1xx", "ed1234", "beta4L", "ttg420");
 	}
 
 }

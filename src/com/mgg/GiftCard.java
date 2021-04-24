@@ -17,9 +17,9 @@ public class GiftCard extends Item {
 	
 	private double amount;
 	
-	public GiftCard(String code, String name) {
+	public GiftCard(String code, String name, double amount) {
 		super(code, name);
-		this.amount = 0;
+		this.amount = amount;
 	}
 
 	@Override

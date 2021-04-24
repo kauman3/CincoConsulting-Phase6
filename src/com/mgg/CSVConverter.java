@@ -126,9 +126,9 @@ public class CSVConverter {
                 } else if(tokens[1].contentEquals("PN")) {
                 	items.add(new NewProduct(tokens[0], tokens[2], Double.parseDouble(tokens[3])));
                 } else if(tokens[1].contentEquals("PU")) {
-                	items.add(new UsedProduct(tokens[0], tokens[2], Double.parseDouble(tokens[3])));
+                	items.add(new UsedProduct(tokens[0], tokens[2], Double.parseDouble(tokens[3]) * 0.8));
                 } else {
-                	items.add(new GiftCard(tokens[0], tokens[2]));
+                	items.add(new GiftCard(tokens[0], tokens[2], 0));
                 }
             }
             s.close();
@@ -177,23 +177,31 @@ public class CSVConverter {
                 	for(Item it : items) {
                 		if(tokens[j].contentEquals(it.getItemCode())) {
                 			if(it instanceof Service) {
+                				Service sv = new Service(it.getItemCode(), it.getName(), ((Service) it).getHourlyRate());
                 				for(Person p : persons) {
                                 	if(p.getPersonCode().contentEquals(tokens[j+1])) {
-                                		((Service) it).setEmployee(p);
+                                		sv.setEmployee(p);
                                 	}
                 				}
-                				((Service) it).setNumHours(Double.parseDouble(tokens[j+2]));
+                				sv.setNumHours(Double.parseDouble(tokens[j+2]));
+                				sale.addItem(sv);
                 			} else if(it instanceof Subscription) {
-                				((Subscription) it).setBeginDate(LocalDate.parse(tokens[j+1]));
-                				((Subscription) it).setEndDate(LocalDate.parse(tokens[j+2]));
+                				Subscription sb = new Subscription(it.getItemCode(), it.getName(), ((Subscription) it).getAnnualFee());
+                				sb.setBeginDate(LocalDate.parse(tokens[j+1]));
+                				sb.setEndDate(LocalDate.parse(tokens[j+2]));
+                				sale.addItem(sb);
                 			} else if(it instanceof NewProduct) {
-                				((NewProduct) it).setQuantity(Integer.parseInt(tokens[j+1]));
+                				NewProduct np = new NewProduct(it.getItemCode(), it.getName(), ((NewProduct) it).getBasePrice());
+                				np.setQuantity(Integer.parseInt(tokens[j+1]));
+                				sale.addItem(np);
                 			} else if(it instanceof UsedProduct) {
-                				((UsedProduct) it).setQuantity(Integer.parseInt(tokens[j+1]));
-                			} else {
-                				((GiftCard) it).setAmount(Double.parseDouble(tokens[j+1]));
+                				UsedProduct up = new UsedProduct(it.getItemCode(), it.getName(), ((UsedProduct) it).getBasePrice());
+                				up.setQuantity(Integer.parseInt(tokens[j+1]));
+                				sale.addItem(up);
+                			} else if(it instanceof GiftCard){
+                				GiftCard gc = new GiftCard(it.getItemCode(), it.getName(), Double.parseDouble(tokens[j+1]));
+                				sale.addItem(gc);
                 			}
-                			sale.addItem(it);
                 		}
                 	}
                 }

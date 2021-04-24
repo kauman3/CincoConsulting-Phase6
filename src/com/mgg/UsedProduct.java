@@ -24,7 +24,7 @@ public class UsedProduct extends Item {
 	}
 	
 	public double getBasePrice() {
-		return Math.round(basePrice * 0.8 * 100.0) / 100.0;
+		return this.basePrice;
 	}
 
 	public int getQuantity() {
@@ -37,7 +37,7 @@ public class UsedProduct extends Item {
 
 	@Override
 	public double getCost() {
-		return this.getBasePrice() * this.quantity;
+		return Math.round(this.getBasePrice() * this.quantity * 100.0) / 100.0;
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class UsedProduct extends Item {
 	public String toString() {
 		String str = String.format("%s\n   (Used Item #%s @$%.2f/ea)%37s%10.2f\n", this.name,
 																			   this.itemCode, 
-																			   this.getBasePrice(),
+																			   this.basePrice,
 																			   "$",
 																			   this.getCost());
 		return str;

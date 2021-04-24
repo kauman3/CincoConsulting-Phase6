@@ -42,6 +42,9 @@ public class SalesData {
 	 * @param saleCode
 	 */
 	public static void removeSale(String saleCode) {
+		if (saleCode == null) {
+			throw new IllegalArgumentException("Error: invalid input");
+		}
 		Connection conn = DatabaseInfo.openConnection();
 		String query = "select saleId from Sale where saleCode like ?;";
 		int saleId = -1;
@@ -121,6 +124,9 @@ public class SalesData {
 	 * @return
 	 */
 	public static int addState(String state) {
+		if (state == null) {
+			throw new IllegalArgumentException("Error: invalid input");
+		}
 		Connection conn = DatabaseInfo.openConnection();
 		String query = "select stateId from State where state like ?;";
 		PreparedStatement ps = null;
@@ -157,6 +163,9 @@ public class SalesData {
 	 * @return
 	 */
 	public static int addCountry(String country) {
+		if (country == null) {
+			throw new IllegalArgumentException("Error: invalid input");
+		}
 		Connection conn = DatabaseInfo.openConnection();
 		String query = "select countryId from Country where isoCode like ?;";
 		PreparedStatement ps = null;
@@ -201,6 +210,9 @@ public class SalesData {
 			 					  String state, 
 			 					  String zip, 
 			 					  String country) {
+		if (street == null || city == null || state == null || zip == null || country == null) {
+			throw new IllegalArgumentException("Error: invalid input");
+		}
 		Connection conn = DatabaseInfo.openConnection();
 		String query = "select addressId from Address where street like ?;";
 		PreparedStatement ps = null;
@@ -259,6 +271,9 @@ public class SalesData {
 								 String state, 
 								 String zip, 
 								 String country) {
+		if (street == null || city == null || state == null || zip == null || country == null || personCode == null || type == null || firstName == null || lastName == null) {
+			throw new IllegalArgumentException("Error: invalid input");
+		}
 		Connection conn = DatabaseInfo.openConnection();
 		String query = "select personId from Person where personCode like ?;";
 		PreparedStatement ps = null;
@@ -296,6 +311,9 @@ public class SalesData {
 	 * @param email
 	 */
 	public static void addEmail(String personCode, String email) {
+		if (personCode == null || email == null) {
+			throw new IllegalArgumentException("Error: invalid input");
+		}
 		Connection conn = DatabaseInfo.openConnection();
 		String query = "select personId from Person where personCode like ?;";
 		PreparedStatement ps = null;
@@ -351,8 +369,12 @@ public class SalesData {
 								String state, 
 								String zip, 
 								String country) {
+		if (storeCode == null || managerCode == null || street == null || city == null || state == null || zip == null || country == null) {
+			throw new IllegalArgumentException("Error: invalid input");
+		}
+		
 		Connection conn = DatabaseInfo.openConnection();
-		String query = "select storeId from Store where storeCode like ?;";
+		String query = "select storeId from Store where storeCode like ?";
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
 	    try {
@@ -446,6 +468,9 @@ public class SalesData {
 	 * @param salesPersonCode
 	 */
 	public static void addSale(String saleCode, String storeCode, String customerCode, String salesPersonCode) {
+		if (saleCode == null || storeCode == null || customerCode == null || salesPersonCode == null) {
+			throw new IllegalArgumentException("Error: invalid input");
+		}
 		Connection conn = DatabaseInfo.openConnection();
 		String query = "select saleId from Sale where saleCode like ?";
 		PreparedStatement ps = null;
@@ -512,6 +537,9 @@ public class SalesData {
 	 * @param quantity
 	 */
 	public static void addProductToSale(String saleCode, String itemCode, int quantity) {
+		if (saleCode == null || itemCode == null) {
+			throw new IllegalArgumentException("Error: invalid input");
+		}
 		Connection conn = DatabaseInfo.openConnection();
 		String query = "select saleId from Sale where saleCode like ?;";
 		PreparedStatement ps = null;
@@ -559,6 +587,9 @@ public class SalesData {
 	 * @param amount
 	 */
 	public static void addGiftCardToSale(String saleCode, String itemCode, double amount) {
+		if (saleCode == null || itemCode == null) {
+			throw new IllegalArgumentException("Error: invalid input");
+		}
 		Connection conn = DatabaseInfo.openConnection();
 		String query = "select saleId from Sale where saleCode like ?;";
 		PreparedStatement ps = null;
@@ -608,6 +639,9 @@ public class SalesData {
 	 * @param billedHours
 	 */
 	public static void addServiceToSale(String saleCode, String itemCode, String employeeCode, double billedHours) {
+		if (saleCode == null || itemCode == null || employeeCode == null) {
+			throw new IllegalArgumentException("Error: invalid input");
+		}
 		Connection conn = DatabaseInfo.openConnection();
 		String query = "select saleId from Sale where saleCode like ?;";
 		PreparedStatement ps = null;
@@ -632,7 +666,7 @@ public class SalesData {
 			} else {
 				throw new IllegalArgumentException("An item with itemCode '" + itemCode + "' does not exist.");
 			}
-			String employeeQuery = "select personId from Item where personCode like ?";
+			String employeeQuery = "select personId from Person where personCode like ?";
 			ps = conn.prepareStatement(employeeQuery);
 			ps.setString(1, employeeCode);
 			rs = ps.executeQuery();
@@ -668,6 +702,9 @@ public class SalesData {
 	 * @param endDate
 	 */
 	public static void addSubscriptionToSale(String saleCode, String itemCode, String startDate, String endDate) {
+		if (saleCode == null || itemCode == null || startDate == null || endDate == null) {
+			throw new IllegalArgumentException("Error: invalid input");
+		}
 		Connection conn = DatabaseInfo.openConnection();
 		String query = "select saleId from Sale where saleCode like ?;";
 		PreparedStatement ps = null;

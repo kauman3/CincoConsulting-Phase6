@@ -7,18 +7,18 @@ import java.util.Comparator;
  */
 public class LinkedList<T> {
 	
-	private LinkedListNode<Sale> head;
+	private LinkedListNode<T> head;
 	private int size;
-	private final Comparator<Sale> cmp;
+	private final Comparator<T> cmp;
 	
-	public LinkedList(Comparator<Sale> cmp) {
+	public LinkedList(Comparator<T> cmp) {
 		this.head = null;
 		this.size = 0;
 		this.cmp = cmp;
 	}
 	
 	/**
-	 * 
+	 * This functions returns true or false based on if the list is empty or not
 	 * @return
 	 */
 	public boolean isEmpty() {
@@ -39,7 +39,7 @@ public class LinkedList<T> {
 	 * This function clears out the contents of the list, making it an empty list.
 	 */
 	public void clear() {
-		LinkedListNode<Sale> current = this.head;
+		LinkedListNode<T> current = this.head;
 		while(current != null) {
 			current.setNext(null);
 			current = current.getNext();
@@ -54,16 +54,21 @@ public class LinkedList<T> {
 	 * 
 	 * @param object
 	 */
-	private void addToStart(Sale sale) {
-		LinkedListNode<Sale> newHead  = new LinkedListNode<Sale>(sale);
+	private void addToStart(T object) {
+		LinkedListNode<T> newHead  = new LinkedListNode<T>(object);
 		newHead.setNext(this.head);
 		this.head = newHead;
 		size++;
 	}
 	
-	private void addAfter(Sale sale, int i) {
-		LinkedListNode<Sale> previous = getListNode(i-1);
-		LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
+	/**
+	 * This method adds the given {@link T} instance at the given index i.
+	 * @param object
+	 * @param i
+	 */
+	private void addAfterIndex(T object, int i) {
+		LinkedListNode<T> previous = getListNode(i-1);
+		LinkedListNode<T> newNode = new LinkedListNode<T>(object);
 		newNode.setNext(previous.getNext());
 		previous.setNext(newNode);
 		size++;
@@ -74,34 +79,39 @@ public class LinkedList<T> {
 	 * 
 	 * @param object
 	 */
-	private void addToEnd(Sale sale) {
+	private void addToEnd(T object) {
 		if(this.head == null) {
-			addToStart(sale);
+			addToStart(object);
 		} else {
-			LinkedListNode<Sale> current = getListNode(size - 1);
-			LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
+			LinkedListNode<T> current = getListNode(size - 1);
+			LinkedListNode<T> newNode = new LinkedListNode<T>(object);
 			newNode.setNext(null);
 			current.setNext(newNode);
 			size++;
 		}
 	}
 	
-	public void add(Sale sale) {
+	/**
+	 * Adds Sales to the LinkedList and maintains an ordering of each of the 
+	 * Sales according to the comparator.
+	 * @param sale
+	 */
+	public void add(T object) {
 		if(this.isEmpty()) {
-			addToStart(sale);
-		} else if(this.cmp.compare(sale, this.getElementAtIndex(0)) < 0) {
-			addToStart(sale);
+			addToStart(object);
+		} else if(this.cmp.compare(object, this.getElementAtIndex(0)) < 0) {
+			addToStart(object);
 		} else {
 			for(int i=0; i<=this.size; i++) {
 				if(i == this.size) {
-					addToEnd(sale);
+					addToEnd(object);
 					return;
 				}
-				if(this.cmp.compare(sale, this.getElementAtIndex(i)) == 0) {
-					addAfter(sale, i);
+				if(this.cmp.compare(object, this.getElementAtIndex(i)) == 0) {
+					addAfterIndex(object, i);
 	                return;
-				} else if(this.cmp.compare(sale, this.getElementAtIndex(i)) < 0) {
-					addAfter(sale, i);
+				} else if(this.cmp.compare(object, this.getElementAtIndex(i)) < 0) {
+					addAfterIndex(object, i);
 					return;
 				}
 			}
@@ -118,8 +128,8 @@ public class LinkedList<T> {
 		if(position == 0) {
 			this.head = this.head.getNext();
 		} else {
-			LinkedListNode<Sale> previous = getListNode(position-1);
-			LinkedListNode<Sale> current = getListNode(position);
+			LinkedListNode<T> previous = getListNode(position-1);
+			LinkedListNode<T> current = getListNode(position);
 			previous.setNext(current.getNext());
 			current = null;
 		}
@@ -134,8 +144,8 @@ public class LinkedList<T> {
 	 * @param position
 	 * @return
 	 */
-	private LinkedListNode<Sale> getListNode(int position) {
-		LinkedListNode<Sale> current = this.head;
+	private LinkedListNode<T> getListNode(int position) {
+		LinkedListNode<T> current = this.head;
 		for(int i=0; i<position; i++) {
 			current = current.getNext();
 		}
@@ -148,7 +158,7 @@ public class LinkedList<T> {
 	 * @param position
 	 * @return
 	 */
-	public Sale getElementAtIndex(int position) {
+	public T getElementAtIndex(int position) {
 		return getListNode(position).getElement();
 	}
 
@@ -156,7 +166,7 @@ public class LinkedList<T> {
 	 * Prints this list to the standard output.
 	 */
 	public void print() {
-		LinkedListNode<Sale> current = this.head;
+		LinkedListNode<T> current = this.head;
 		while(current != null) {
 			System.out.println(current.getElement());
 			current = current.getNext();

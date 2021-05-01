@@ -135,6 +135,13 @@ public class SalesReport {
 		return;
 	}
 	
+	/**
+	 * Produces an ordered, detailed sales report for every sale given a list of {@link Sale}s 
+	 * and a Comparator. The report includes the sale ID, store code, customer's and 
+	 * salesperson's address and emails, and a breakdown of the grand total.
+	 * @param sales
+	 * @param cmp
+	 */
 	public static void orderedSalesReport(List<Sale> sales, Comparator<Sale> cmp) {
 		LinkedList<Sale> orderedSales = new LinkedList<Sale>(cmp);
 		for(Sale s : sales) {
@@ -144,13 +151,6 @@ public class SalesReport {
 	}
 	
 	public static void main(String[] args) {
-//		salespersonReport(CSVConverter.persons, CSVConverter.sales);
-//		storeSalesReport(CSVConverter.stores, CSVConverter.sales);
-//		detailedSalesReport(CSVConverter.sales);
-//		salespersonReport(SQLConverter.persons, SQLConverter.sales);
-//		storeSalesReport(SQLConverter.stores, SQLConverter.sales);
-//		detailedSalesReport(SQLConverter.sales);
-		
 		System.out.println("+-------------------------------------------------------------------------+\n"
 				         + "| Sales by Customer                                                       |\n"
 						 + "+-------------------------------------------------------------------------+\n");
@@ -163,40 +163,6 @@ public class SalesReport {
 		         		 + "| Sales by Store                                                          |\n"
 		         		 + "+-------------------------------------------------------------------------+\n");
 		orderedSalesReport(SQLConverter.sales, cmpByStore);
-		
-//		List<Person> persons = SQLConverter.loadPersonData();
-//		List<Store> stores = SQLConverter.loadStoreData(persons);
-//		List<Item> items = SQLConverter.loadItemData();
-//		List<Sale> sales = SQLConverter.loadSaleData(persons, stores, items);
-//		
-//		LinkedList<Sale> salesOrderedByName = new LinkedList<Sale>(cmpByCustomerName);
-//		LinkedList<Sale> salesOrderedByValue = new LinkedList<Sale>(cmpByValue);
-//		LinkedList<Sale> salesOrderedByStore = new LinkedList<Sale>(cmpByStore);
-//		
-//		for(int i=0; i<sales.size(); i++) {
-//			salesOrderedByName.add(sales.get(i));
-//			salesOrderedByValue.add(sales.get(i));
-//			salesOrderedByStore.add(sales.get(i));
-//		}
-//		
-//		for(int i=0; i<sales.size(); i++) {
-//			System.out.print(sales.get(i));
-//		}
-//		for(int i=0; i<10; i++) {
-//			System.out.println();
-//		}
-//		
-//		salesOrderedByName.print();
-//		for(int i=0; i<10; i++) {
-//			System.out.println();
-//		}
-//		
-//		salesOrderedByValue.print();
-//		for(int i=0; i<10; i++) {
-//			System.out.println();
-//		}
-//		
-//		salesOrderedByStore.print();
 	}
 	
 }

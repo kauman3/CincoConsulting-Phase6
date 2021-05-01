@@ -1,6 +1,9 @@
 package com.mgg;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * Contains methods to produce reports based on a list of {@link Sale}s.
@@ -96,9 +99,85 @@ public class SalesReport {
 //		salespersonReport(CSVConverter.persons, CSVConverter.sales);
 //		storeSalesReport(CSVConverter.stores, CSVConverter.sales);
 //		detailedSalesReport(CSVConverter.sales);
-		salespersonReport(SQLConverter.persons, SQLConverter.sales);
-		storeSalesReport(SQLConverter.stores, SQLConverter.sales);
-		detailedSalesReport(SQLConverter.sales);
+//		salespersonReport(SQLConverter.persons, SQLConverter.sales);
+//		storeSalesReport(SQLConverter.stores, SQLConverter.sales);
+//		detailedSalesReport(SQLConverter.sales);
+		
+		Comparator<Sale> cmpByCustomerName = new Comparator<Sale>() {
+			public int compare(Sale s1, Sale s2) {
+				String lastName1 = s1.getCustomer().getLastName();
+				String lastName2 = s2.getCustomer().getLastName();
+				int result = lastName1.compareTo(lastName2);
+				if(result == 0) {
+					String firstName1 = s1.getCustomer().getFirstName();
+					String firstName2 = s2.getCustomer().getFirstName();
+					result = firstName1.compareTo(firstName2);
+				}
+				return result;
+			}
+		};
+		
+		Comparator<Sale> cmpByValue = new Comparator<Sale>() {
+			public int compare(Sale s1, Sale s2) {
+				Double value1 = s2.getGrandTotal();
+				Double value2 = s1.getGrandTotal();
+				return value1.compareTo(value2);
+			}
+		};
+		
+		Comparator<Sale> cmpByStore = new Comparator<Sale>() {
+			public int compare(Sale s1, Sale s2) {
+				String storeCode1 = s1.getStore().getStoreCode();
+				String storeCode2 = s2.getStore().getStoreCode();
+				int result = storeCode1.compareTo(storeCode2);
+				if(result == 0) {
+					String lastName1 = s1.getSalesperson().getLastName();
+					String lastName2 = s2.getSalesperson().getLastName();
+					result = lastName1.compareTo(lastName2);
+					if(result == 0) {
+						String firstName1 = s1.getSalesperson().getFirstName();
+						String firstName2 = s2.getSalesperson().getFirstName();
+						result = firstName1.compareTo(firstName2);
+					}
+					return result;
+				}
+				return result;
+			}
+		};
+		
+		List<Person> persons = SQLConverter.loadPersonData();
+		List<Store> stores = SQLConverter.loadStoreData(persons);
+		List<Item> items = SQLConverter.loadItemData();
+		List<Sale> sales = SQLConverter.loadSaleData(persons, stores, items);
+		
+		LinkedList<Sale> salesOrderedByName = new LinkedList<Sale>(cmpByCustomerName);
+		LinkedList<Sale> salesOrderedByValue = new LinkedList<Sale>(cmpByValue);
+		LinkedList<Sale> salesOrderedByStore = new LinkedList<Sale>(cmpByStore);
+		
+		for(int i=0; i<sales.size(); i++) {
+			salesOrderedByName.add(sales.get(i));
+			salesOrderedByValue.add(sales.get(i));
+			salesOrderedByStore.add(sales.get(i));
+		}
+		
+		for(int i=0; i<sales.size(); i++) {
+			System.out.print(sales.get(i));
+		}
+		for(int i=0; i<10; i++) {
+			System.out.println();
+		}
+		
+		salesOrderedByName.print();
+		for(int i=0; i<10; i++) {
+			System.out.println();
+		}
+		
+		salesOrderedByValue.print();
+		for(int i=0; i<10; i++) {
+			System.out.println();
+		}
+		
+		salesOrderedByStore.print();
 	}
 	
 }

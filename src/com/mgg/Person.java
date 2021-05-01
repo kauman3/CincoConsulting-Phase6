@@ -48,6 +48,14 @@ public abstract class Person {
 	public String getPersonCode() {
 		return personCode;
 	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
 
 	public String getFullName() {
 		return lastName + ", " + firstName;

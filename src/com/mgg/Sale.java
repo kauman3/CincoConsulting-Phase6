@@ -1,6 +1,7 @@
 package com.mgg;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -51,7 +52,11 @@ public class Sale {
 	public Store getStore() {
 		return store;
 	}
-
+	
+	public Person getCustomer() {
+		return customer;
+	}
+	
 	public Person getSalesperson() {
 		return salesperson;
 	}

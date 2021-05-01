@@ -6,16 +6,6 @@ import java.util.Comparator;
  * A linked list implementation for <code>T</code> instances.
  */
 public class LinkedList<T> {
-
-	//TODO: ask at office hours
-		//how do you know which way the list is being sorted?
-			//pass comparator when you instantiate the list
-		//where should the comparators be made
-	
-	//notes
-		//the only object type being sorted is Sale
-		//make three different functions to sort them, each with its own comparator
-		//methods will be passes one element at a time, and the methods will be used in the other classes
 	
 	private LinkedListNode<Sale> head;
 	private int size;
@@ -27,6 +17,10 @@ public class LinkedList<T> {
 		this.cmp = cmp;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isEmpty() {
 		return (this.size == 0);
 	}
@@ -39,22 +33,6 @@ public class LinkedList<T> {
 	 */
 	public int size() {
 		return this.size;
-	}
-	
-	public Sale getElementAtIndex(int index) {
-		if (index < 0 || index >= size) {
-			throw new IllegalArgumentException("index " + index + " is out of bounds");
-		}
-		LinkedListNode<Sale> current = this.getNodeAtIndex(index);
-		return current.getElement();
-	}
-	
-	private LinkedListNode<Sale> getNodeAtIndex(int index) {
-		LinkedListNode<Sale> current = head;
-		for (int i = 0; i < index; i++) {
-			current = current.getNext();
-		}
-		return current;
 	}
 
 	/**
@@ -83,18 +61,12 @@ public class LinkedList<T> {
 		size++;
 	}
 	
-	private void addBefore(Sale sale, int i) {
-		LinkedListNode<Sale> current = getListNode(i);
-		LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
-		newNode.setNext(current);
-		current.setNext(current.getNext());
-	}
-	
 	private void addAfter(Sale sale, int i) {
 		LinkedListNode<Sale> previous = getListNode(i-1);
 		LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
 		newNode.setNext(previous.getNext());
 		previous.setNext(newNode);
+		size++;
 	}
 
 	/**
@@ -106,50 +78,30 @@ public class LinkedList<T> {
 		if(this.head == null) {
 			addToStart(sale);
 		} else {
-			LinkedListNode<Sale> currentTail = getListNode(this.size-1);
-			LinkedListNode<Sale> newTail = new LinkedListNode<Sale>(sale);
-			currentTail.setNext(newTail);
+			LinkedListNode<Sale> current = getListNode(size - 1);
+			LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
+			newNode.setNext(null);
+			current.setNext(newNode);
 			size++;
 		}
 	}
 	
 	public void add(Sale sale) {
-		//check if it is < or > each element that is already in the list using a comparator
-		//do we need to check every element in the list?
-			//its already sorted, so once we know that is is greater than an element
-			// in the list, we can just put it to the right
-		//need a way to know that once you're at the end of the list, the item needs to go
-		// in the front
-		
 		if(this.isEmpty()) {
 			addToStart(sale);
-		} else if(this.cmp.compare(sale, this.getObject(0)) < 0) {
+		} else if(this.cmp.compare(sale, this.getElementAtIndex(0)) < 0) {
 			addToStart(sale);
 		} else {
 			for(int i=0; i<=this.size; i++) {
 				if(i == this.size) {
-					LinkedListNode<Sale> current = getListNode(i-1);
-					LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
-					newNode.setNext(null);
-					current.setNext(newNode);
-					size++;
+					addToEnd(sale);
 					return;
 				}
-				if(this.cmp.compare(sale, this.getObject(i)) == 0) {
-					LinkedListNode<Sale> previous = getListNode(i-1);
-					LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
-					newNode.setNext(previous.getNext());
-					previous.setNext(newNode);
-	                this.size++;
+				if(this.cmp.compare(sale, this.getElementAtIndex(i)) == 0) {
+					addAfter(sale, i);
 	                return;
-				} else if(this.cmp.compare(sale, this.getObject(i)) < 0) {
-					//sale needs to be to the left of the sale being checked
-					LinkedListNode<Sale> previous = getListNode(i-1);
-					LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
-					newNode.setNext(previous.getNext());
-					previous.setNext(newNode);
-					//once we put the node in the correct position, we need to break out of the loop
-					size++;
+				} else if(this.cmp.compare(sale, this.getElementAtIndex(i)) < 0) {
+					addAfter(sale, i);
 					return;
 				}
 			}
@@ -196,7 +148,7 @@ public class LinkedList<T> {
 	 * @param position
 	 * @return
 	 */
-	public Sale getObject(int position) {
+	public Sale getElementAtIndex(int position) {
 		return getListNode(position).getElement();
 	}
 

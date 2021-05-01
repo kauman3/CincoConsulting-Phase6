@@ -1,9 +1,7 @@
 package com.mgg;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.PriorityQueue;
 
 /**
  * Contains methods to produce reports based on a list of {@link Sale}s.
@@ -130,11 +128,19 @@ public class SalesReport {
 	 * breakdown of the grand total.
 	 * @param sales
 	 */
-	public static void detailedSalesReport(List<Sale> sales) {
+	public static void detailedSalesReport(List<Sale> sales, Comparator<Sale> cmp) {
 		for(Sale s : sales) {
 			System.out.println(s);
 		}
 		return;
+	}
+	
+	public static void orderedSalesReport(List<Sale> sales, Comparator<Sale> cmp) {
+		LinkedList<Sale> orderedSales = new LinkedList<Sale>(cmp);
+		for(Sale s : sales) {
+			orderedSales.add(s);
+		}
+		orderedSales.print();
 	}
 	
 	public static void main(String[] args) {
@@ -145,44 +151,52 @@ public class SalesReport {
 //		storeSalesReport(SQLConverter.stores, SQLConverter.sales);
 //		detailedSalesReport(SQLConverter.sales);
 		
-//		List<Person> persons = CSVConverter.loadPersonData("data/Persons.csv");
-//		List<Store> stores = CSVConverter.loadStoreData("data/Stores.csv", persons);
-//		List<Item> items = CSVConverter.loadItemData("data/Items.csv");
-//		List<Sale> sales = CSVConverter.loadSaleData("data/Sales.csv", persons, stores, items);
+		System.out.println("+-------------------------------------------------------------------------+\n"
+				         + "| Sales by Customer                                                       |\n"
+						 + "+-------------------------------------------------------------------------+\n");
+		orderedSalesReport(SQLConverter.sales, cmpByCustomerName);
+		System.out.println("+-------------------------------------------------------------------------+\n"
+		         		 + "| Sales by Total                                                          |\n"
+		         		 + "+-------------------------------------------------------------------------+\n");
+		orderedSalesReport(SQLConverter.sales, cmpByValue);
+		System.out.println("+-------------------------------------------------------------------------+\n"
+		         		 + "| Sales by Store                                                          |\n"
+		         		 + "+-------------------------------------------------------------------------+\n");
+		orderedSalesReport(SQLConverter.sales, cmpByStore);
 		
-		List<Person> persons = SQLConverter.loadPersonData();
-		List<Store> stores = SQLConverter.loadStoreData(persons);
-		List<Item> items = SQLConverter.loadItemData();
-		List<Sale> sales = SQLConverter.loadSaleData(persons, stores, items);
-		
-		LinkedList<Sale> salesOrderedByName = new LinkedList<Sale>(cmpByCustomerName);
-		LinkedList<Sale> salesOrderedByValue = new LinkedList<Sale>(cmpByValue);
-		LinkedList<Sale> salesOrderedByStore = new LinkedList<Sale>(cmpByStore);
-		
-		for(int i=0; i<sales.size(); i++) {
-			salesOrderedByName.add(sales.get(i));
-			salesOrderedByValue.add(sales.get(i));
-			salesOrderedByStore.add(sales.get(i));
-		}
-		
-		for(int i=0; i<sales.size(); i++) {
-			System.out.print(sales.get(i));
-		}
-		for(int i=0; i<10; i++) {
-			System.out.println();
-		}
-		
-		salesOrderedByName.print();
-		for(int i=0; i<10; i++) {
-			System.out.println();
-		}
-		
-		salesOrderedByValue.print();
-		for(int i=0; i<10; i++) {
-			System.out.println();
-		}
-		
-		salesOrderedByStore.print();
+//		List<Person> persons = SQLConverter.loadPersonData();
+//		List<Store> stores = SQLConverter.loadStoreData(persons);
+//		List<Item> items = SQLConverter.loadItemData();
+//		List<Sale> sales = SQLConverter.loadSaleData(persons, stores, items);
+//		
+//		LinkedList<Sale> salesOrderedByName = new LinkedList<Sale>(cmpByCustomerName);
+//		LinkedList<Sale> salesOrderedByValue = new LinkedList<Sale>(cmpByValue);
+//		LinkedList<Sale> salesOrderedByStore = new LinkedList<Sale>(cmpByStore);
+//		
+//		for(int i=0; i<sales.size(); i++) {
+//			salesOrderedByName.add(sales.get(i));
+//			salesOrderedByValue.add(sales.get(i));
+//			salesOrderedByStore.add(sales.get(i));
+//		}
+//		
+//		for(int i=0; i<sales.size(); i++) {
+//			System.out.print(sales.get(i));
+//		}
+//		for(int i=0; i<10; i++) {
+//			System.out.println();
+//		}
+//		
+//		salesOrderedByName.print();
+//		for(int i=0; i<10; i++) {
+//			System.out.println();
+//		}
+//		
+//		salesOrderedByValue.print();
+//		for(int i=0; i<10; i++) {
+//			System.out.println();
+//		}
+//		
+//		salesOrderedByStore.print();
 	}
 	
 }

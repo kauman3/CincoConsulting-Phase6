@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="com.mgg.Item" project="CincoConsulting-Phase2-Revised" 
-    file="/CincoConsulting-Phase2-Revised/src/com/mgg/Item.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="720" y="150"/>    
+  <class id="1" language="java" name="com.mgg.Item" project="CincoConsulting-Phase6" 
+    file="/CincoConsulting-Phase6/src/com/mgg/Item.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="546" y="179"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="com.mgg.NewProduct" project="CincoConsulting-Phase2-Revised" 
-    file="/CincoConsulting-Phase2-Revised/src/com/mgg/NewProduct.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="391" y="233"/>    
+  <class id="2" language="java" name="com.mgg.GiftCard" project="CincoConsulting-Phase6" 
+    file="/CincoConsulting-Phase6/src/com/mgg/GiftCard.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="542" y="472"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="com.mgg.UsedProduct" project="CincoConsulting-Phase2-Revised" 
-    file="/CincoConsulting-Phase2-Revised/src/com/mgg/UsedProduct.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="473" y="482"/>    
+  <class id="3" language="java" name="com.mgg.NewProduct" project="CincoConsulting-Phase6" 
+    file="/CincoConsulting-Phase6/src/com/mgg/NewProduct.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="257" y="179"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="com.mgg.Subscription" project="CincoConsulting-Phase2-Revised" 
-    file="/CincoConsulting-Phase2-Revised/src/com/mgg/Subscription.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1055" y="238"/>    
+  <class id="4" language="java" name="com.mgg.UsedProduct" project="CincoConsulting-Phase6" 
+    file="/CincoConsulting-Phase6/src/com/mgg/UsedProduct.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="254" y="450"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="com.mgg.Service" project="CincoConsulting-Phase2-Revised" 
-    file="/CincoConsulting-Phase2-Revised/src/com/mgg/Service.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="954" y="487"/>    
+  <class id="5" language="java" name="com.mgg.Subscription" project="CincoConsulting-Phase6" 
+    file="/CincoConsulting-Phase6/src/com/mgg/Subscription.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="852" y="181"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="com.mgg.GiftCard" project="CincoConsulting-Phase2-Revised" 
-    file="/CincoConsulting-Phase2-Revised/src/com/mgg/GiftCard.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="719" y="486"/>    
+  <class id="6" language="java" name="com.mgg.Service" project="CincoConsulting-Phase6" 
+    file="/CincoConsulting-Phase6/src/com/mgg/Service.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="858" y="466"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -60,19 +60,19 @@
     <end type="TARGET" refId="1"/>  
   </generalization>  
   <generalization id="8">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="9">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
+  <generalization id="9">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
   <generalization id="10">    
-    <end type="SOURCE" refId="4"/>    
+    <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
   <generalization id="11">    
-    <end type="SOURCE" refId="3"/>    
+    <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

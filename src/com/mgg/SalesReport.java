@@ -19,6 +19,48 @@ import java.util.PriorityQueue;
  */
 public class SalesReport {
 	
+	public static final Comparator<Sale> cmpByCustomerName = new Comparator<Sale>() {
+		public int compare(Sale s1, Sale s2) {
+			String lastName1 = s1.getCustomer().getLastName();
+			String lastName2 = s2.getCustomer().getLastName();
+			int result = lastName1.compareTo(lastName2);
+			if(result == 0) {
+				String firstName1 = s1.getCustomer().getFirstName();
+				String firstName2 = s2.getCustomer().getFirstName();
+				result = firstName1.compareTo(firstName2);
+			}
+			return result;
+		}
+	};
+	
+	public static final Comparator<Sale> cmpByValue = new Comparator<Sale>() {
+		public int compare(Sale s1, Sale s2) {
+			Double value1 = s1.getGrandTotal();
+			Double value2 = s2.getGrandTotal();
+			return value1.compareTo(value2);
+		}
+	};
+	
+	public static final Comparator<Sale> cmpByStore = new Comparator<Sale>() {
+		public int compare(Sale s1, Sale s2) {
+			String storeCode1 = s1.getStore().getStoreCode();
+			String storeCode2 = s2.getStore().getStoreCode();
+			int result = storeCode1.compareTo(storeCode2);
+			if(result == 0) {
+				String lastName1 = s1.getSalesperson().getLastName();
+				String lastName2 = s2.getSalesperson().getLastName();
+				result = lastName1.compareTo(lastName2);
+				if(result == 0) {
+					String firstName1 = s1.getSalesperson().getFirstName();
+					String firstName2 = s2.getSalesperson().getFirstName();
+					result = firstName1.compareTo(firstName2);
+				}
+				return result;
+			}
+			return result;
+		}
+	};
+	
 	/**
 	 * Produces a summary report for each salesperson given a list of {@link Person}s 
 	 * and {@link Sale}s. Grand Total is the total after discounts and taxes.
@@ -103,52 +145,10 @@ public class SalesReport {
 //		storeSalesReport(SQLConverter.stores, SQLConverter.sales);
 //		detailedSalesReport(SQLConverter.sales);
 		
-		Comparator<Sale> cmpByCustomerName = new Comparator<Sale>() {
-			public int compare(Sale s1, Sale s2) {
-				String lastName1 = s1.getCustomer().getLastName();
-				String lastName2 = s2.getCustomer().getLastName();
-				int result = lastName1.compareTo(lastName2);
-				if(result == 0) {
-					String firstName1 = s1.getCustomer().getFirstName();
-					String firstName2 = s2.getCustomer().getFirstName();
-					result = firstName1.compareTo(firstName2);
-				}
-				return result;
-			}
-		};
-		
-		Comparator<Sale> cmpByValue = new Comparator<Sale>() {
-			public int compare(Sale s1, Sale s2) {
-				Double value1 = s2.getGrandTotal();
-				Double value2 = s1.getGrandTotal();
-				return value1.compareTo(value2);
-			}
-		};
-		
-		Comparator<Sale> cmpByStore = new Comparator<Sale>() {
-			public int compare(Sale s1, Sale s2) {
-				String storeCode1 = s1.getStore().getStoreCode();
-				String storeCode2 = s2.getStore().getStoreCode();
-				int result = storeCode1.compareTo(storeCode2);
-				if(result == 0) {
-					String lastName1 = s1.getSalesperson().getLastName();
-					String lastName2 = s2.getSalesperson().getLastName();
-					result = lastName1.compareTo(lastName2);
-					if(result == 0) {
-						String firstName1 = s1.getSalesperson().getFirstName();
-						String firstName2 = s2.getSalesperson().getFirstName();
-						result = firstName1.compareTo(firstName2);
-					}
-					return result;
-				}
-				return result;
-			}
-		};
-		
-		List<Person> persons = SQLConverter.loadPersonData();
-		List<Store> stores = SQLConverter.loadStoreData(persons);
-		List<Item> items = SQLConverter.loadItemData();
-		List<Sale> sales = SQLConverter.loadSaleData(persons, stores, items);
+		List<Person> persons = CSVConverter.loadPersonData("data/Persons.csv");
+		List<Store> stores = CSVConverter.loadStoreData("data/Stores.csv", persons);
+		List<Item> items = CSVConverter.loadItemData("data/Items.csv");
+		List<Sale> sales = CSVConverter.loadSaleData("data/Sales.csv", persons, stores, items);
 		
 		LinkedList<Sale> salesOrderedByName = new LinkedList<Sale>(cmpByCustomerName);
 		LinkedList<Sale> salesOrderedByValue = new LinkedList<Sale>(cmpByValue);

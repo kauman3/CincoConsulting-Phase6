@@ -82,6 +82,20 @@ public class LinkedList<T> {
 		this.head = newHead;
 		size++;
 	}
+	
+	private void addBefore(Sale sale, int i) {
+		LinkedListNode<Sale> current = getListNode(i);
+		LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
+		newNode.setNext(current);
+		current.setNext(current.getNext());
+	}
+	
+	private void addAfter(Sale sale, int i) {
+		LinkedListNode<Sale> previous = getListNode(i-1);
+		LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
+		newNode.setNext(previous.getNext());
+		previous.setNext(newNode);
+	}
 
 	/**
 	 * This method adds the given {@link T} instance to the end of the list.
@@ -114,19 +128,32 @@ public class LinkedList<T> {
 		} else {
 			for(int i=0; i<this.size; i++) {
 				if(this.cmp.compare(sale, this.getObject(i)) == 0) {
-					//need to make a new comparison
-				} else if(this.cmp.compare(sale, this.getObject(i)) > 0) {
+//					//need to make a new comparison
+//					if(sale.getGrandTotal() > this.getObject(i).getGrandTotal()) {
+//						//put the sale to the left
+//						LinkedListNode<Sale> current = getListNode(i);
+//						LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
+//						newNode.setNext(current);
+//						current.setNext(current.getNext());
+//					} else {
+//						//put the sale to the right
+//						LinkedListNode<Sale> previous = getListNode(i-1);
+//						LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
+//						newNode.setNext(previous.getNext());
+//						previous.setNext(newNode);
+//					}
+					size++;
+				} else if(this.cmp.compare(sale, this.getObject(i)) < 0) {
 					//sale needs to be to the right of the sale being checked
 					LinkedListNode<Sale> previous = getListNode(i-1);
-					LinkedListNode<Sale> current = previous.getNext();
 					LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
-					newNode.setNext(current);
+					newNode.setNext(previous.getNext());
 					previous.setNext(newNode);
 					//once we put the node in the correct position, we need to break out of the loop
+					size++;
 					break;
 				}
 			}
-			size++;
 		}
 	}
 

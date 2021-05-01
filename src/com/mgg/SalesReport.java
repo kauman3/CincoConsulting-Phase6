@@ -35,8 +35,8 @@ public class SalesReport {
 	
 	public static final Comparator<Sale> cmpByValue = new Comparator<Sale>() {
 		public int compare(Sale s1, Sale s2) {
-			Double value1 = s1.getGrandTotal();
-			Double value2 = s2.getGrandTotal();
+			Double value1 = s2.getGrandTotal();
+			Double value2 = s1.getGrandTotal();
 			return value1.compareTo(value2);
 		}
 	};
@@ -145,10 +145,15 @@ public class SalesReport {
 //		storeSalesReport(SQLConverter.stores, SQLConverter.sales);
 //		detailedSalesReport(SQLConverter.sales);
 		
-		List<Person> persons = CSVConverter.loadPersonData("data/Persons.csv");
-		List<Store> stores = CSVConverter.loadStoreData("data/Stores.csv", persons);
-		List<Item> items = CSVConverter.loadItemData("data/Items.csv");
-		List<Sale> sales = CSVConverter.loadSaleData("data/Sales.csv", persons, stores, items);
+//		List<Person> persons = CSVConverter.loadPersonData("data/Persons.csv");
+//		List<Store> stores = CSVConverter.loadStoreData("data/Stores.csv", persons);
+//		List<Item> items = CSVConverter.loadItemData("data/Items.csv");
+//		List<Sale> sales = CSVConverter.loadSaleData("data/Sales.csv", persons, stores, items);
+		
+		List<Person> persons = SQLConverter.loadPersonData();
+		List<Store> stores = SQLConverter.loadStoreData(persons);
+		List<Item> items = SQLConverter.loadItemData();
+		List<Sale> sales = SQLConverter.loadSaleData(persons, stores, items);
 		
 		LinkedList<Sale> salesOrderedByName = new LinkedList<Sale>(cmpByCustomerName);
 		LinkedList<Sale> salesOrderedByValue = new LinkedList<Sale>(cmpByValue);

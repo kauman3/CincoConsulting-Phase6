@@ -126,32 +126,31 @@ public class LinkedList<T> {
 		} else if(this.cmp.compare(sale, this.getObject(0)) < 0) {
 			addToStart(sale);
 		} else {
-			for(int i=0; i<this.size; i++) {
-				if(this.cmp.compare(sale, this.getObject(i)) == 0) {
-//					//need to make a new comparison
-//					if(sale.getGrandTotal() > this.getObject(i).getGrandTotal()) {
-//						//put the sale to the left
-//						LinkedListNode<Sale> current = getListNode(i);
-//						LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
-//						newNode.setNext(current);
-//						current.setNext(current.getNext());
-//					} else {
-//						//put the sale to the right
-//						LinkedListNode<Sale> previous = getListNode(i-1);
-//						LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
-//						newNode.setNext(previous.getNext());
-//						previous.setNext(newNode);
-//					}
+			for(int i=0; i<=this.size; i++) {
+				if(i == this.size) {
+					LinkedListNode<Sale> current = getListNode(i-1);
+					LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
+					newNode.setNext(null);
+					current.setNext(newNode);
 					size++;
+					return;
+				}
+				if(this.cmp.compare(sale, this.getObject(i)) == 0) {
+					LinkedListNode<Sale> previous = getListNode(i-1);
+					LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
+					newNode.setNext(previous.getNext());
+					previous.setNext(newNode);
+	                this.size++;
+	                return;
 				} else if(this.cmp.compare(sale, this.getObject(i)) < 0) {
-					//sale needs to be to the right of the sale being checked
+					//sale needs to be to the left of the sale being checked
 					LinkedListNode<Sale> previous = getListNode(i-1);
 					LinkedListNode<Sale> newNode = new LinkedListNode<Sale>(sale);
 					newNode.setNext(previous.getNext());
 					previous.setNext(newNode);
 					//once we put the node in the correct position, we need to break out of the loop
 					size++;
-					break;
+					return;
 				}
 			}
 		}

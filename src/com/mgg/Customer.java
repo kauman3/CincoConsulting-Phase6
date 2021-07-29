@@ -28,3 +28,4 @@ public abstract class Customer extends Person {
 	public abstract double getDiscountRate();
 
 }
+

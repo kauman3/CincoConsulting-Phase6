@@ -1,137 +1,80 @@
 <Store>
-  <storeCode>ed1234</storeCode>
+  <storeCode>bmn123</storeCode>
   <manager class="Salesperson">
-    <personCode>ttg420</personCode>
-    <firstName>Jeffrey</firstName>
-    <lastName>Quinn</lastName>
+    <personCode>abc123</personCode>
+    <firstName>Mei</firstName>
+    <lastName>Chinn</lastName>
     <address>
-      <street>0 Havey Avenue</street>
-      <city>Cleveland</city>
-      <state>OH</state>
-      <zip>44177</zip>
+      <street>199 Troy</street>
+      <city>Allentown</city>
+      <state>PA</state>
+      <zip>18105</zip>
       <country>US</country>
     </address>
     <emails>
-      <string>squarry0@reverbnation.com</string>
-      <string>squarry0@salon.com</string>
+      <string>mchinn0@imdb.com</string>
     </emails>
     <sales/>
   </manager>
   <address>
-    <street>264 Corben Center</street>
-    <city>Huntsville</city>
-    <state>AL</state>
-    <zip>35895</zip>
+    <street>123 Anthes</street>
+    <city>Olympia</city>
+    <state>WA</state>
+    <zip>98516</zip>
     <country>US</country>
   </address>
   <sales/>
 </Store>
 <Store>
-  <storeCode>94pf32</storeCode>
+  <storeCode>jlk345</storeCode>
   <manager class="Salesperson">
-    <personCode>aa887a</personCode>
-    <firstName>John</firstName>
-    <lastName>JohnnyDrip</lastName>
+    <personCode>abc123</personCode>
+    <firstName>Mei</firstName>
+    <lastName>Chinn</lastName>
     <address>
-      <street>69420 Nice Street</street>
-      <city>Gainesville</city>
-      <state>FL</state>
-      <zip>32605</zip>
+      <street>199 Troy</street>
+      <city>Allentown</city>
+      <state>PA</state>
+      <zip>18105</zip>
       <country>US</country>
     </address>
     <emails>
-      <string>JohnnyDrip@gman.com</string>
+      <string>mchinn0@imdb.com</string>
     </emails>
     <sales/>
   </manager>
   <address>
-    <street>703 Iowa Pass</street>
-    <city>Mobile</city>
-    <state>AL</state>
-    <zip>36689</zip>
-    <country>US</country>
-  </address>
-  <sales/>
-</Store>
-<Store>
-  <storeCode>73668b</storeCode>
-  <manager class="Salesperson">
-    <personCode>ttg420</personCode>
-    <firstName>Jeffrey</firstName>
-    <lastName>Quinn</lastName>
-    <address>
-      <street>0 Havey Avenue</street>
-      <city>Cleveland</city>
-      <state>OH</state>
-      <zip>44177</zip>
-      <country>US</country>
-    </address>
-    <emails>
-      <string>squarry0@reverbnation.com</string>
-      <string>squarry0@salon.com</string>
-    </emails>
-    <sales/>
-  </manager>
-  <address>
-    <street>25 Old Shore Alley</street>
-    <city>Trenton</city>
-    <state>NJ</state>
-    <zip>8603</zip>
-    <country>US</country>
-  </address>
-  <sales/>
-</Store>
-<Store>
-  <storeCode>96f2cf</storeCode>
-  <manager class="Salesperson">
-    <personCode>ttg420</personCode>
-    <firstName>Jeffrey</firstName>
-    <lastName>Quinn</lastName>
-    <address>
-      <street>0 Havey Avenue</street>
-      <city>Cleveland</city>
-      <state>OH</state>
-      <zip>44177</zip>
-      <country>US</country>
-    </address>
-    <emails>
-      <string>squarry0@reverbnation.com</string>
-      <string>squarry0@salon.com</string>
-    </emails>
-    <sales/>
-  </manager>
-  <address>
-    <street>60827 Oak Way</street>
-    <city>Cincinnati</city>
+    <street>234 Drewry</street>
+    <city>Dayton</city>
     <state>OH</state>
-    <zip>45203</zip>
+    <zip>45454</zip>
     <country>US</country>
   </address>
   <sales/>
 </Store>
 <Store>
-  <storeCode>69x420</storeCode>
+  <storeCode>kl12jh</storeCode>
   <manager class="Salesperson">
-    <personCode>aa887a</personCode>
-    <firstName>John</firstName>
-    <lastName>JohnnyDrip</lastName>
+    <personCode>abc123</personCode>
+    <firstName>Mei</firstName>
+    <lastName>Chinn</lastName>
     <address>
-      <street>69420 Nice Street</street>
-      <city>Gainesville</city>
-      <state>FL</state>
-      <zip>32605</zip>
+      <street>199 Troy</street>
+      <city>Allentown</city>
+      <state>PA</state>
+      <zip>18105</zip>
       <country>US</country>
     </address>
     <emails>
-      <string>JohnnyDrip@gman.com</string>
+      <string>mchinn0@imdb.com</string>
     </emails>
     <sales/>
   </manager>
   <address>
-    <street>944 Doe Crossing Drive</street>
-    <city>Migrate</city>
-    <state>KY</state>
-    <zip>41905</zip>
+    <street>456 Pine View</street>
+    <city>Providence</city>
+    <state>NE</state>
+    <zip>2905</zip>
     <country>US</country>
   </address>
   <sales/>
